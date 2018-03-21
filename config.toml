@@ -13,7 +13,7 @@ canonifyURLs = true
 
 [params]
   # Sets the meta tag description
-  description          = "HTML5 UP theme, Future Imperfect with some extra goodies, ported by Julio Pescador. Powered by Hugo"
+  description          = "Thoughts on data analysis, programming, and statistics, with an emphasis on R, JavaScript, Azure, and Power BI"
   # Sets the navbarTitle that appears in the top left of the navigation bar
   navbarTitle          = "Tony McGovern"
   # Sets where "View More Posts" links
