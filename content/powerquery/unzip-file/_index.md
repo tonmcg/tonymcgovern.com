@@ -43,3 +43,6 @@ in
 
 ## References
 1. [Reading Zip files in PowerQuery / M](http://sql10.blogspot.sg/2016/06/reading-zip-files-in-powerquery-m.html) by Mark White
+2. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
+3. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
+4. [Csv.Document](https://msdn.microsoft.com/en-us/library/mt260840.aspx), Power Query M function reference

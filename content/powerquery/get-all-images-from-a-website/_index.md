@@ -39,3 +39,5 @@ in
 
 ## References
 1. [GetImages](https://gist.github.com/tonmcg/1d09b39d2c66dd6dfbe27ce0ff5401fd) by Tony McGovern
+2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
+3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference

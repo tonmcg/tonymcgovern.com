@@ -54,3 +54,5 @@ in
 
 ## References
 1. [RandomSelections](https://gist.github.com/tonmcg/e85642d99f2f7d365382a2d06006f618) by Tony McGovern
+2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
+3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference

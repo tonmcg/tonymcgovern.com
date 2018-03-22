@@ -6,7 +6,6 @@ date = "2018-04-01"
 ## Create List of Character Elements
 ```javascript
 let
-    Source = Text.FromBinary(File.Contents("https://goo.gl/hqUUPR")),
     list = {"Portugal", "United Kingdom", "Germany", "New Zealand", "Australia", "Belgium", "France"}
 in
     list
@@ -30,3 +29,10 @@ in
     selection
 ```
 Australia
+
+Results will vary because of the random position of the selection
+
+## References
+1. [Number.RandomBetween](https://msdn.microsoft.com/en-us/library/mt253327.aspx), Power Query M function reference
+2. [Number.RoundDown](https://msdn.microsoft.com/en-us/library/mt253362.aspx), Power Query M function reference
+3. [List.Count](https://msdn.microsoft.com/en-us/library/mt253591.aspx), Power Query M function reference
