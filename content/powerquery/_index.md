@@ -1,6 +1,6 @@
 +++
 title = "Power Query M Technical Notes"
-date = "20148-04-01"
+date = "2018-04-01"
 +++
 
 ## Basics
@@ -21,12 +21,12 @@ date = "20148-04-01"
 ## Finance & Accounting
 + [Create Amortization Schedule](create-amortization-schedule/)
 
-## Connecting to APIs
-+ [Twitter API](connect-to-twitter-api/) (IN DEVELOPMENT)
-+ [United States Census Bureau API](connect-to-us-census-api/) (IN DEVELOPMENT)
-
 ## Uncommon File Formats
 + [Unzip File](unzip-file/)
+
+## Connecting to APIs
++ [United States Census Bureau API](census/)
++ [Twitter API](twitter/)
 
 ## United States Geographies
 + [Get U.S. States](census/get-us-states/)
@@ -35,24 +35,6 @@ date = "20148-04-01"
 + [Get U.S. Zip Code Relationships](census/get-us-zip-relationships/)
 + [Get GEOIDs for U.S. Geographies](census/get-us-geoids/)
 + [Get U.S. Place Names](census/get-us-places)
-
-## Twitter API
-+ [Get Collections](twitter/get-collections/) (IN DEVELOPMENT)
-+ [Get Favorites](twitter/get-favorites/) (IN DEVELOPMENT)
-+ [Get Followers](twitter/get-followers/) (IN DEVELOPMENT)
-+ [Get Friends](twitter/get-friends/) (IN DEVELOPMENT)
-+ [Get Mentions](twitter/get-mentions/) (IN DEVELOPMENT)
-+ [Get Retweeters](twitter/get-retweeters/) (IN DEVELOPMENT)
-+ [Get Retweets](twitter/get-retweets/) (IN DEVELOPMENT)
-+ [Get Token](twitter/get-token/)
-+ [Get Trends](twitter/get-trends/) (IN DEVELOPMENT)
-+ [Search Tweets](twitter/get-tweets/) (IN DEVELOPMENT)
-+ [Search Users](twitter/get-users/) (IN DEVELOPMENT)
-
-## U.S. Census Bureau API
-+ [Get ACS](census/get-acs/) (IN DEVELOPMENT)
-+ [Get Decennial](census/get-decennial/) (IN DEVELOPMENT)
-+ [Get Variables](census/get-variables/) (IN DEVELOPMENT)
 
 Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/tonmcg/) or [ask me on Twitter](https://twitter.com/tonmcg).
 

@@ -22,15 +22,15 @@ let
 in
     list
 ```
-|    |List 	         
-|:---|:--------------
-|1	 |Portugal	     
-|2	 |United Kingdom
-|3	 |Germany
-|4   |New Zealand
-|5	 |Australia
-|6	 |France
-|7	 |Belgium
+|     |List 	         
+|:---:|:--------------
+|1	  |Portugal	     
+|2	  |United Kingdom
+|3	  |Germany
+|4    |New Zealand
+|5	  |Australia
+|6	  |Belgium
+|7	  |France
 
 ## Create List of Randomly Repeated Elements from Initial List
 ```javascript
@@ -46,11 +46,11 @@ in
 |        |List 	         
 |:------:|:--------------
 |1	     |United Kingdom 
-|2	     |New Zealan
+|2	     |New Zealand
 |3	     |Australia
 |4       |New Zealand
 |...     |...
-|1000000 |France
+|1000000 |Germany
 
 ## References
 1. [RandomSelections](https://gist.github.com/tonmcg/e85642d99f2f7d365382a2d06006f618) by Tony McGovern

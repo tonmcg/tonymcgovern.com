@@ -32,13 +32,13 @@ let
 in
     results
 ```
-|     |Column1 	|Column2 |Column3   |Column4        |
-|:----|:--------|:-------|:---------|:--------------|
-|1	  |USPS	    |GEOID   |ANSICODE  |NAME           |
-|2	  |AL       |01001	 |00161526	|Autauga County |
-|3	  |AL       |01003	 |00161527	|Baldwin County |
-|...  |... 	    |...     |...       |...            |
-|3221	|PR       |72153 	 |01804557	|Yauco Municipio|
+|     |Column1 	|Column2 |Column3   |Column4
+|:---:|:--------|:-------|:---------|:---
+|1	  |USPS	    |GEOID   |ANSICODE  |NAME
+|2	  |AL       |01001	 |00161526	|Autauga County
+|3	  |AL       |01003	 |00161527	|Baldwin County
+|...  |... 	    |...     |...       |...
+|3221	|PR       |72153 	 |01804557	|Yauco Municipio
 
 
 ## References

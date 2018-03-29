@@ -28,7 +28,7 @@ let
 in
     selection
 ```
-Australia
+<pre>Australia</pre>
 
 Results will vary because of the random position of the selection
 

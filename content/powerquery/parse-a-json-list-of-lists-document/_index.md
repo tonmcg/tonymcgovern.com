@@ -10,7 +10,14 @@ let
 in
     Source
 ```
-`[["CustomerID","Name","Phone"],["1","Julia","987-6543"],["2","Riley","123-4567"],["3","Jim","543-7890"]]`
+<pre>
+[
+    ["CustomerID","Name","Phone"],
+    ["1","Julia","987-6543"],
+    ["2","Riley","123-4567"],
+    ["3","Jim","543-7890"]
+]
+</pre>
 
 ## Parse JSON Document
 ```javascript
@@ -21,7 +28,7 @@ in
     ListOfLists
 ```
 |     |List
-|----:|:---
+|:---:|:---
 |1	  |**List**
 |2	  |**List**
 |3	  |**List**
@@ -36,12 +43,12 @@ let
 in
     results
 ```
-|     |Column1   |Column2 |Column3 |
-|----:|:---------|:-------|:-------|
-|1	  |CustomerID|Name    |Phone   |
-|2	  |1         |Julia   |987-6543|
-|3	  |2         |Riley   |123-4567|
-|4	  |3         |Jim     |543-7890|
+|     |Column1   |Column2 |Column3
+|:---:|:---------|:-------|:------
+|1	  |CustomerID|Name    |Phone
+|2	  |1         |Julia   |987-6543
+|3	  |2         |Riley   |123-4567
+|4	  |3         |Jim     |543-7890
 
 ## References
 1. [Json.Document](https://msdn.microsoft.com/en-us/library/mt260861.aspx), Power Query M function reference

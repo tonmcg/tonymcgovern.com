@@ -22,13 +22,13 @@ let
 in
     results
 ```
-|    |state_name          |state_fips |state_abbr
-|---:|:-------------------|:----------|:----
-|1	 |Alabama             |01	        |AL
-|2	 |Alaska              |02	        |AK
-|3	 |Arizona             |04	        |AZ
-|... |... 	              |...        |...
-|60	 |U.S. Virgin Islands |78         |VI
+|     |state_name          |state_fips |state_abbr
+|:---:|:-------------------|:----------|:----
+|1	  |Alabama             |01         |AL
+|2	  |Alaska              |02         |AK
+|3	  |Arizona             |04         |AZ
+|...  |...                 |...        |...
+|60	  |U.S. Virgin Islands |78         |VI
 
 ## Get U.S. States Not Including Territories
 ```javascript
@@ -39,13 +39,13 @@ let
 in
     results
 ```
-|    |state_name          |state_fips |state_abbr
-|---:|:-------------------|:----------|:----
-|1	 |Alabama             |01	        |AL
-|2	 |Alaska              |02	        |AK
-|3	 |Arizona             |04	        |AZ
-|... |... 	              |...        |...
-|51  |Wyoming             |56         |WY
+|     |state_name          |state_fips |state_abbr
+|:---:|:-------------------|:----------|:----
+|1	  |Alabama             |01         |AL
+|2	  |Alaska              |02         |AK
+|3	  |Arizona             |04         |AZ
+|...  |...                 |...        |...
+|51   |Wyoming             |56         |WY
 
 ## References
 1. [GetStates](https://gist.github.com/tonmcg/a545cd94d798c687fc3ced139093e23e) by Tony McGovern
