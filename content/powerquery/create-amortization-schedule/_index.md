@@ -7,8 +7,26 @@ date = "2018-04-01"
 ```javascript
 let
     // load custom CreateAmortization function from Github Gist
-    source = Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
-    CreateAmortization = Expression.Evaluate(source, #shared)
+    CreateAmortization = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
+        [
+            #"List.First" = List.First,
+            #"List.Select" = List.Select,
+            #"Number.Power" = Number.Power,
+            #"Int64.Type" = Int64.Type,
+            #"Table.FromList" = Table.FromList,
+            #"List.Generate" = List.Generate,
+            #"Date.AddDays" = Date.AddDays,
+            #"Date.AddMonths" = Date.AddMonths,
+            #"Date.AddQuarters" = Date.AddQuarters,
+            #"Date.AddYears" = Date.AddYears,
+            #"Number.Round" = Number.Round,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Value.ReplaceType" = Value.ReplaceType
+        ]
+    )
 in
     CreateAmortization
 ```
@@ -18,8 +36,26 @@ in
 let
     // Create an amortization schedule with a 1000 initial amount, 5% interest rate, for 5 years, 
     // and is compounded semi-annually
-    source = Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
-    CreateAmortization = Expression.Evaluate(source, #shared),
+    CreateAmortization = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
+        [
+            #"List.First" = List.First,
+            #"List.Select" = List.Select,
+            #"Number.Power" = Number.Power,
+            #"Int64.Type" = Int64.Type,
+            #"Table.FromList" = Table.FromList,
+            #"List.Generate" = List.Generate,
+            #"Date.AddDays" = Date.AddDays,
+            #"Date.AddMonths" = Date.AddMonths,
+            #"Date.AddQuarters" = Date.AddQuarters,
+            #"Date.AddYears" = Date.AddYears,
+            #"Number.Round" = Number.Round,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Value.ReplaceType" = Value.ReplaceType
+        ]
+    ),
     results = CreateAmortization(1000, 0.05, 5, "Semi-annual")
 in
     results
@@ -37,8 +73,26 @@ in
 let
     // Create an amortization schedule with a 1000 initial amount, 5% interest rate, for 5 years, 
     // is compounded semi-annually, and starts on January 1, 2018 
-    source = Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
-    CreateAmortization = Expression.Evaluate(source, #shared),
+    CreateAmortization = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
+        [
+            #"List.First" = List.First,
+            #"List.Select" = List.Select,
+            #"Number.Power" = Number.Power,
+            #"Int64.Type" = Int64.Type,
+            #"Table.FromList" = Table.FromList,
+            #"List.Generate" = List.Generate,
+            #"Date.AddDays" = Date.AddDays,
+            #"Date.AddMonths" = Date.AddMonths,
+            #"Date.AddQuarters" = Date.AddQuarters,
+            #"Date.AddYears" = Date.AddYears,
+            #"Number.Round" = Number.Round,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Value.ReplaceType" = Value.ReplaceType
+        ]
+    ),
     results = CreateAmortization(1000, 0.05, 5, "Semi-annual", #date(2018,1,1))
 in
     results
@@ -53,8 +107,6 @@ in
 
 ## References
 1. [CreateAmortization](https://gist.github.com/tonmcg/0748ad9fcfb542aada7a2c153cfb0fb9) by Tony McGovern
-2. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
-3. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
 
 ## Appendix: For Use on Power BI Service
 <div style="table-layout:fixed;display:table;width:100%;">

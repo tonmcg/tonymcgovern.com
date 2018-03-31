@@ -7,8 +7,19 @@ date = "2018-04-01"
 ```javascript
 let
     // load custom MinMaxScaler function from Github Gist
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/MHMTMX")),
-    MinMaxScaler = Expression.Evaluate(Source, #shared)
+    MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Min" = List.Min,
+            #"List.Max" = List.Max,
+            #"List.Generate" = List.Generate,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    )
 in
     MinMaxScaler
 ```
@@ -16,8 +27,19 @@ in
 ## Create a List
 ```javascript
 let
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/MHMTMX")),
-    MinMaxScaler = Expression.Evaluate(Source, #shared),
+    MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Min" = List.Min,
+            #"List.Max" = List.Max,
+            #"List.Generate" = List.Generate,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    ),
     list = {1,2,3,4,5,6,7,8,9}
 in
     list
@@ -37,9 +59,19 @@ in
 ## Rescale a List Between 0 and 1
 ```javascript
 let
-    // Rescale list values between 0 and 1 (default)
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/MHMTMX")),
-    MinMaxScaler = Expression.Evaluate(Source, #shared),
+    MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Min" = List.Min,
+            #"List.Max" = List.Max,
+            #"List.Generate" = List.Generate,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    ),
     list = {1,2,3,4,5,6,7,8,9},
     results = MinMaxScaler(list)
 in
@@ -60,9 +92,19 @@ in
 ## Rescale a List Between -1 and 1
 ```javascript
 let
-    // Rescale list values between -1 and 1
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/MHMTMX")),
-    MinMaxScaler = Expression.Evaluate(Source, #shared),
+    MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Min" = List.Min,
+            #"List.Max" = List.Max,
+            #"List.Generate" = List.Generate,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    ),
     list = {1,2,3,4,5,6,7,8,9},
     results = MinMaxScaler(list, {-1,1})
 in
@@ -82,5 +124,3 @@ in
 
 ## References
 1. [MinMaxScaler](https://gist.github.com/tonmcg/36f23a0e3d3cec71577cc59ba6b9298c) by Tony McGovern
-2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
-3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
