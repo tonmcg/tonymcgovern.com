@@ -3,7 +3,7 @@ title = "Power Query M Technical Notes"
 date = "2018-04-02"
 +++
 
-## List Basics
+## Lists Basics
 + [Select Random Element From a List](select-random-element-from-a-list/)
 + [Create List of Randomly Repeated Elements](create-list-of-randomly-repeated-elements/)
 + [Impute Missing Values With Means](impute-missing-values-with-means/)
@@ -34,10 +34,10 @@ date = "2018-04-02"
 ## United States Geographies
 + [Get U.S. States](census/get-us-states/)
 + [Get U.S. Geographies](census/get-us-geographies/)
-+ [Get U.S. State FIPS](census/get-us-state-fips/)
-+ [Get U.S. Zip Code Relationships](census/get-us-zip-relationships/)
-+ [Get GEOIDs for U.S. Geographies](census/get-us-geoids/)
-+ [Get U.S. Place Names](census/get-us-places)
++ Get U.S. State FIPS (IN DEVELOPMENT)
++ Get U.S. Zip Code Relationships (IN DEVELOPMENT)
++ Get GEOIDs for U.S. Geographies (IN DEVELOPMENT)
++ Get U.S. Place Names (IN DEVELOPMENT)
 
 Have questions or suggestions? Feel free to [ask me on Twitter](https://twitter.com/tonmcg).
 

@@ -1,51 +1,110 @@
 +++
 title = "Search Tweets"
-date = "2018-04-01"
+date = "2018-04-02"
 +++
 
 ## Prerequisites
-1. Sign up for a [Twitter account](http://twitter.com/signup)
-2. Sign in to the [Twitter Apps page](https://apps.twitter.com) and create a new application
-3. Get your Consumer Key and Consumer Secret
-4. Copy your Consumer Key and Consumer Secret into the GetOAuthToken function
-5. Access Twitter API through other custom Power Query functions like [Get Followers](../get-followers/) or [Get Friends](../get-friends/) or [SearchTweets](../search-tweets/)
+1. Follow the [Twitter authorization steps shown here](../get-token)
 
 ## Preliminaries
 ```javascript
 let
-    // load custom SearchTweets function from Github Gist
-    Token = Text.FromBinary(Web.Contents("https://goo.gl/AmHvpe")),
-    GetOAuthToken = Expression.Evaluate(Token, #shared),
-    Search = Text.FromBinary(Web.Contents("https://goo.gl/sMVJxY")),
-    SearchTweets = Expression.Evaluate(Search, #shared)
+    // load custom GetOAuthToken and SearchTweets functions from Github
+    GetOAuthToken = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/GetOAuth")),
+        [
+            #"Binary.ToText" = Binary.ToText,
+            #"Json.Document" = Json.Document,
+            #"Text.ToBinary" = Text.ToBinary,
+            #"Web.Contents" = Web.Contents
+        ]
+    ),
+    SearchTweets = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/TwitterSearchTweets")),
+        [
+            #"Binary.ToText" = Binary.ToText,
+            #"Json.Document" = Json.Document,
+            #"List.Generate" = List.Generate,
+            #"Logical.ToText" = Logical.ToText,
+            #"Number.ToText" = Number.ToText,
+            #"Number.RoundUp" = Number.RoundUp,
+            #"Record.AddField" = Record.AddField,
+            #"Record.RemoveFields" = Record.RemoveFields,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.ExpandListColumn" = Table.ExpandListColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Text.Combine" = Text.Combine,
+            #"Text.ToBinary" = Text.ToBinary,
+            #"Uri.Combine" = Uri.Combine,
+            #"Uri.EscapeDataString" = Uri.EscapeDataString,
+            #"Uri.Parts" = Uri.Parts,
+            #"Web.Contents" = Web.Contents,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"GetOAuthToken" = GetOAuthToken,
+            #"consumer_key" = consumer_key,
+            #"consumer_secret" = consumer_secret
+        ]
+    )
 in
     SearchTweets
 ```
 
-## Search Twitter for 'Power BI' Tweets
+## Search Tweets
 ```javascript
 let
-    Token = Text.FromBinary(Web.Contents("https://goo.gl/AmHvpe")),
-    GetOAuthToken = Expression.Evaluate(Token, #shared),
-    Search = Text.FromBinary(Web.Contents("https://goo.gl/sMVJxY")),
-    SearchTweets = Expression.Evaluate(Search, #shared),
-    // search Twitter for tweets about 'powerbi' from the last 6 to 9 days
-    PowerBI = SearchTweets("powerbi", 100)
+    GetOAuthToken = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/GetOAuth")),
+        [
+            #"Binary.ToText" = Binary.ToText,
+            #"Json.Document" = Json.Document,
+            #"Text.ToBinary" = Text.ToBinary,
+            #"Web.Contents" = Web.Contents
+        ]
+    ),
+    SearchTweets = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/TwitterSearchTweets")),
+        [
+            #"Binary.ToText" = Binary.ToText,
+            #"Json.Document" = Json.Document,
+            #"List.Generate" = List.Generate,
+            #"Logical.ToText" = Logical.ToText,
+            #"Number.ToText" = Number.ToText,
+            #"Number.RoundUp" = Number.RoundUp,
+            #"Record.AddField" = Record.AddField,
+            #"Record.RemoveFields" = Record.RemoveFields,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.ExpandListColumn" = Table.ExpandListColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Text.Combine" = Text.Combine,
+            #"Text.ToBinary" = Text.ToBinary,
+            #"Uri.Combine" = Uri.Combine,
+            #"Uri.EscapeDataString" = Uri.EscapeDataString,
+            #"Uri.Parts" = Uri.Parts,
+            #"Web.Contents" = Web.Contents,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"GetOAuthToken" = GetOAuthToken,
+            #"consumer_key" = consumer_key,
+            #"consumer_secret" = consumer_secret
+        ]
+    ),
+    // Get the 500 most recent tweets that include the "powerbi" keyword
+    tweets = SearchTweets("powerbi", 500, "recent")
 in
-    PowerBI
+    tweets
 ```
 
-|     |created_at|id |id_str|text|...|
-|:---:|:---|:---|:---|:---|:---|
-|1    |Sun Mar 25 19:59:03 +0000 2018|977998315349512000|977998315349512192|Agradecimentos ao professor @rommelcarneiro por sempre apoiar as iniciativas de intermediar o relacionamento entre… https://t.co/hJBDyTcLlF|...|
-|2    |Sun Mar 25 19:54:16 +0000 2018|977997113941545000|977997113941544961|"RT @GuyInACube: Use the #PowerBI Rebind API to move from cached to #AzureAS https://t.co/ar2cb9uHuS https://t.co/qBICmwY545"|...|
-|3    |Sun Mar 25 19:54:09 +0000 2018|977997082912023000|977997082912022528|Wie können Sie Ihre Daten auf Karten darstellen? Mit #PowerView. |...|
-|4    |Sun Mar 25 19:53:18 +0000 2018|977996868671058000|977996868671057921|testing out the PowerBI #PSConfEU app|...|
-|...  |...|...|...|...|...|
-|4300 |Mon Mar 19 01:49:31 +0000 2018|975549797905117000|975549797905117184|RT @AndreiFateevUS: Make sure you're all caught up on #PowerBI! Watch on-demand sessions or register for upcoming live webinars: https://t.…|...|
+||statuses.created_at|statuses.id|statuses.id_str|statuses.text
+|---:|:---|:---|---:|:---
+|1|Thu Mar 29 13:19:08 +0000 2018|9.79347E+17|979347224080666624|RT @brianknight: Blog: Power BI Developer community March update https://t.co/tgT7rbxHaJ #PowerBI
+|2|Thu Mar 29 13:17:01 +0000 2018|9.79347E+17|979346691018121217|Blog: Power BI Developer community March update https://t.co/tgT7rbxHaJ #PowerBI
+|3|Thu Mar 29 13:16:26 +0000 2018|9.79347E+17|979346546885058561|#allsvenskan #sverige #fotboll #powerbi  En beräkning över hur många snittpoäng ett lag behöver ta för guld(63 poän… https://t.co/DGThlKpFLR
+|...|...|...|...|...
+|500|Thu Mar 29 11:05:40 +0000 2018|9.79314E+17|979313635616018432|RT @denglishbi: Looks like a #PowerBI #SSRS update is being released today to resolve some of the issues with the March 2018 release, not a…
 
 ## References
-1. [Get Data from Twitter API](https://chris.koester.io/index.php/2015/07/16/get-data-from-twitter-api-with-power-query/) by Chris Koester
-2. [GetOAuthToken](https://gist.github.com/tonmcg/d07ddacf298fc3977cc31d8e9788421b) by Tony McGovern
-3. [SearchTweets](https://gist.github.com/tonmcg/6c0ee19cdf2965e911fc176290ed2f16) by Tony McGovern
-4. [Search Tweets Twitter API Reference](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets)
+1. [Search Tweets](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets), Twtter API Reference
+2. [Twitter.SearchTweets](https://github.com/tonmcg/powertweet/blob/master/M/Twitter.SearchTweets.pq) by Tony McGovern
