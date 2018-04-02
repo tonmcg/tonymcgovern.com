@@ -1,19 +1,17 @@
 +++
 author = "Tony McGovern"
-categories = ["powertweet,M,Power Query"]
+categories = ["PowerTweet","M","Power Query"]
 tags = ["vignette"]
 date = "2018-04-02"
 description = "Introduction to PowerTweet M functions"
-featured = "pic03.jpg"
-featuredalt = "Pic 3"
+featured = "Influencers_Squared.png"
+featuredalt = "Influencers Squared"
 featuredpath = "date"
 linktitle = ""
 title = "PowerTweet: Twitter Data with Power Query"
 type = "post"
 
 +++
-
-<iframe class="pre" width="100%" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiODdhNDg3OTItODhmZS00NjFkLWIwODAtNjg2NGU2YzRmOTU4IiwidCI6ImRjNTliNTFkLWVmZDItNDYyNi04M2EyLTljMmU2MzE1MTcwZiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>
 
 ## Introduction
 
@@ -76,3 +74,7 @@ in
 
 ### PowerTweet Documentation
 [Navigate you browser here](../../powerquery/twitter/) for more information on how to use `PowerTweet`, including code snippets on how to authenticate to the Twitter API and other Power Query Twitter functions.
+
+### Sample Power BI Report
+The embedded Power BI report below uses many of the functions listed here.
+<iframe class="pre" width="100%" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiODdhNDg3OTItODhmZS00NjFkLWIwODAtNjg2NGU2YzRmOTU4IiwidCI6ImRjNTliNTFkLWVmZDItNDYyNi04M2EyLTljMmU2MzE1MTcwZiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>
