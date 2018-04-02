@@ -1,12 +1,15 @@
 +++
 title = "Power Query M Technical Notes"
-date = "2018-04-01"
+date = "2018-04-02"
 +++
 
-## Basics
+## List Basics
 + [Select Random Element From a List](select-random-element-from-a-list/)
 + [Create List of Randomly Repeated Elements](create-list-of-randomly-repeated-elements/)
 + [Impute Missing Values With Means](impute-missing-values-with-means/)
+
+## Statistics
++ [Create a Binomial Distribution](create-binomial-distribution)
 + [One-Hot Encode Categorical Variables](one-hot-encode-categorical-variables/) (IN DEVELOPMENT)
 + [Rescale a List](rescale-a-list/)
 + [Standardize a List](standardize-a-list/)
@@ -36,6 +39,6 @@ date = "2018-04-01"
 + [Get GEOIDs for U.S. Geographies](census/get-us-geoids/)
 + [Get U.S. Place Names](census/get-us-places)
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/tonmcg/) or [ask me on Twitter](https://twitter.com/tonmcg).
+Have questions or suggestions? Feel free to [ask me on Twitter](https://twitter.com/tonmcg).
 
 Thanks for reading!
