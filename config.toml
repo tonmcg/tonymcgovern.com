@@ -1,4 +1,4 @@
-baseurl = "https://www.tonymcgovern.netlify.com/"
+baseurl = "http://www.tonymcgovern.netlify.com/"
 languageCode = "en-us"
 title = "Tony McGovern. Hacker. Artist. Storyteller. Data lover."
 theme = "hugo-future-imperfect"
