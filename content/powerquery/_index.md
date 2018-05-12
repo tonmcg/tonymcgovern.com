@@ -6,11 +6,13 @@ date = "2018-04-02"
 ## Lists Basics
 + [Select Random Element From a List](select-random-element-from-a-list/)
 + [Create List of Randomly Repeated Elements](create-list-of-randomly-repeated-elements/)
+
+## Process Data
 + [Impute Missing Values With Means](impute-missing-values-with-means/)
 
 ## Statistics
-+ [Create a Binomial Distribution](create-binomial-distribution)
-+ [One-Hot Encode Categorical Variables](one-hot-encode-categorical-variables/) (IN DEVELOPMENT)
++ Create a Binomial Distribution (IN DEVELOPMENT)
++ One-Hot Encode Categorical Variables (IN DEVELOPMENT)
 + [Rescale a List](rescale-a-list/)
 + [Standardize a List](standardize-a-list/)
 
