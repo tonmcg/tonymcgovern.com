@@ -1,4 +1,4 @@
-baseurl = "http://www.tonymcgovern.com/"
+baseurl = "https://www.tonymcgovern.com/"
 languageCode = "en-us"
 title = "Tony McGovern. Hacker. Artist. Storyteller. Data lover."
 theme = "hugo-future-imperfect"
@@ -13,7 +13,7 @@ canonifyURLs = true
 
 [params]
   # Sets the meta tag description
-  description          = "Thoughts on data analysis, programming, and statistics, with an emphasis on R, JavaScript, Azure, and Power BI"
+  description          = "Thoughts on data analysis, programming, and statistics, with an emphasis on R, JavaScript, Power Query, Azure, and Power BI"
   # Sets the navbarTitle that appears in the top left of the navigation bar
   navbarTitle          = "Tony McGovern"
   # Sets where "View More Posts" links
