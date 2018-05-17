@@ -7,8 +7,24 @@ date = "2018-04-01"
 ```javascript
 let
     // load custom GetImages function from Github Gist
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/7HSPQS")),
-    GetImages = Expression.Evaluate(Source, #shared),
+    GetImages = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/7HSPQS")), 
+        [
+            #"List.Combine" = List.Combine,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
+            #"Text.Combine" = Text.Combine,
+            #"Text.StartsWith" = Text.StartsWith,
+            #"Text.EndsWith" = Text.EndsWith,
+            #"Uri.Parts" = Uri.Parts,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    )
 in
     GetImages
 ```
@@ -16,8 +32,24 @@ in
 ## Get All Images from a Website
 ```javascript
 let
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/7HSPQS")),
-    GetImages = Expression.Evaluate(Source, #shared),
+    GetImages = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/7HSPQS")), 
+        [
+            #"List.Combine" = List.Combine,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
+            #"Text.Combine" = Text.Combine,
+            #"Text.StartsWith" = Text.StartsWith,
+            #"Text.EndsWith" = Text.EndsWith,
+            #"Uri.Parts" = Uri.Parts,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    ),
     // return all from the Der Speigel International homepage
     results = GetImages("http://www.spiegel.de/international")
 in
@@ -38,6 +70,17 @@ in
 
 
 ## References
-1. [GetImages](https://gist.github.com/tonmcg/1d09b39d2c66dd6dfbe27ce0ff5401fd) by Tony McGovern
-2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
-3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
+### Custom Function Reference
++ [GetImages](https://gist.github.com/tonmcg/1d09b39d2c66dd6dfbe27ce0ff5401fd) by Tony McGovern
+
+### Power Query M Reference
++ [List.Combine](https://msdn.microsoft.com/en-us/query-bi/m/list-combine)
++ [Text.From](https://msdn.microsoft.com/en-us/query-bi/m/text-from)
++ [Text.FromBinary](https://msdn.microsoft.com/en-us/query-bi/m/text-frombinary)
++ [Text.BetweenDelimiters](https://msdn.microsoft.com/en-us/query-bi/m/text-betweendelimiters)
++ [Text.Combine](https://msdn.microsoft.com/en-us/query-bi/m/text-combine)
++ [Text.StartsWith](https://msdn.microsoft.com/en-us/query-bi/m/text-startswith)
++ [Text.EndsWith](https://msdn.microsoft.com/en-us/query-bi/m/text-endswith)
++ [Uri.Parts](https://msdn.microsoft.com/en-us/query-bi/m/uri-parts)
++ [Web.Contents](https://msdn.microsoft.com/en-us/query-bi/m/web-contents)
++ [Web.Page](https://msdn.microsoft.com/en-us/query-bi/m/web-page)

@@ -1,6 +1,6 @@
 +++
 title = "Create Amortization Schedule"
-date = "2018-04-01"
+date = "2018-05-16"
 +++
 
 ## Preliminaries
@@ -106,7 +106,7 @@ in
 |11	  |10 	  |1/1/23	    |111.47	    |2.79	    |111.47	   |114.26	|0          |
 
 ## References
-1. [CreateAmortization](https://gist.github.com/tonmcg/0748ad9fcfb542aada7a2c153cfb0fb9) by Tony McGovern
++ [CreateAmortization](https://gist.github.com/tonmcg/0748ad9fcfb542aada7a2c153cfb0fb9) by Tony McGovern
 
 ## Appendix: For Use on Power BI Service
 <div style="table-layout:fixed;display:table;width:100%;">

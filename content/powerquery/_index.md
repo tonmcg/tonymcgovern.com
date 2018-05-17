@@ -1,20 +1,20 @@
 +++
 title = "Power Query M Technical Notes"
-date = "2018-04-02"
+date = "2018-05-16"
 +++
 
 ## Lists Basics
 + [Select Random Element From a List](select-random-element-from-a-list/)
 + [Create List of Randomly Repeated Elements](create-list-of-randomly-repeated-elements/)
 
-## Process Data
-+ [Impute Missing Values With Means](impute-missing-values-with-means/)
-
 ## Statistics
-+ Create a Binomial Distribution (IN DEVELOPMENT)
-+ One-Hot Encode Categorical Variables (IN DEVELOPMENT)
++ [Impute Missing Values With Means](impute-missing-values-with-means/)
++ [Calculate Percentile](calculate-percentile)
 + [Rescale a List](rescale-a-list/)
 + [Standardize a List](standardize-a-list/)
++ Calculate an Interquartile Range (IQR) (IN DEVELOPMENT)
++ Create a Binomial Distribution (IN DEVELOPMENT)
++ One-Hot Encode Categorical Variables (IN DEVELOPMENT)
 
 ## Data Transformations
 + [Parse a JSON List of Lists Document](parse-a-json-list-of-lists-document/)
@@ -40,6 +40,10 @@ date = "2018-04-02"
 + Get U.S. Zip Code Relationships (IN DEVELOPMENT)
 + Get GEOIDs for U.S. Geographies (IN DEVELOPMENT)
 + Get U.S. Place Names (IN DEVELOPMENT)
+
+## Creating Custom Colors
++ [Get Top _n_ Colors From A Website](swatch-discovery-api)
++ [Create Color Scheme From Base Color](color-api)
 
 Have questions or suggestions? Feel free to [ask me on Twitter](https://twitter.com/tonmcg).
 

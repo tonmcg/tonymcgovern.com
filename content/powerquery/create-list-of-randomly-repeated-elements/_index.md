@@ -1,23 +1,46 @@
 +++
-title = "Create List of Randomly Repeated Elements"
-date = "2018-04-01"
+title = "Create List of Randomly Repeating Elements"
+date = "2018-05-16"
 +++
 
 ## Preliminaries
 ```javascript
 let
-    // Load custom RandomSelections function from Github Gist
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/6kyLBe")),
-    RandomSelections = Expression.Evaluate(Source, #shared)
+    // Load custom GenerateRandom function from Github Gist
+    GenerateRandom = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/Rh7ze8")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"Number.RoundDown" = Number.RoundDown,
+            #"Number.RandomBetween" = Number.RandomBetween,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type            
+        ]
+    )
 in
-    RandomSelections
+    GenerateRandom
 ```
 
 ## Create List of Character Elements
 ```javascript
 let
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/6kyLBe")),
-    RandomSelections = Expression.Evaluate(Source, #shared),
+    GenerateRandom = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/Rh7ze8")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"Number.RoundDown" = Number.RoundDown,
+            #"Number.RandomBetween" = Number.RandomBetween,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type            
+        ]
+    ),
+    // create list of character or numerical elements
     list = {"Portugal", "United Kingdom", "Germany", "New Zealand", "Australia", "Belgium", "France"}
 in
     list
@@ -35,11 +58,22 @@ in
 ## Create List of Randomly Repeated Elements from Initial List
 ```javascript
 let
-    // Randomly select values from a list of countries that results in an output list of 1,000,000 items
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/6kyLBe")),
-    RandomSelections = Expression.Evaluate(Source, #shared),
+    GenerateRandom = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/Rh7ze8")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"Number.RoundDown" = Number.RoundDown,
+            #"Number.RandomBetween" = Number.RandomBetween,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type            
+        ]
+    ),
     list = {"Portugal", "United Kingdom", "Germany", "New Zealand", "Australia", "Belgium", "France"},
-    results = RandomSelections(list, 1000000)		
+    // Randomly select values from a list of countries that results in an output list of 1,000,000 items
+    results = GenerateRandom(list, 1000000)		
 in
     results
 ```
@@ -53,6 +87,12 @@ in
 |1000000 |Germany
 
 ## References
-1. [RandomSelections](https://gist.github.com/tonmcg/e85642d99f2f7d365382a2d06006f618) by Tony McGovern
-2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
-3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
+### Custom Function Reference
++ [GenerateRandom](https://gist.github.com/tonmcg/e85642d99f2f7d365382a2d06006f618) by Tony McGovern
+
+### Power Query M Reference
++ [List.Buffer](https://msdn.microsoft.com/en-us/query-bi/m/list-buffer)
++ [List.Count](https://msdn.microsoft.com/en-us/query-bi/m/list-count)
++ [List.Generate](https://msdn.microsoft.com/en-us/query-bi/m/list-generate)
++ [Number.RoundDown](https://msdn.microsoft.com/en-us/query-bi/m/number-rounddown)
++ [Number.RandomBetween](https://msdn.microsoft.com/en-us/query-bi/m/number-randombetween)

@@ -1,6 +1,6 @@
 +++
 title = "Parse a JSON List of Lists Document"
-date = "2018-04-01"
+date = "2018-05-16"
 +++
 
 ## Create a JSON List of Lists Text String
@@ -51,5 +51,7 @@ in
 |4	  |3         |Jim     |543-7890
 
 ## References
-1. [Json.Document](https://msdn.microsoft.com/en-us/library/mt260861.aspx), Power Query M function reference
-1. [Table.FromRows](https://msdn.microsoft.com/en-us/library/mt260791.aspx), Power Query M function reference
+### Power Query M Reference
+
++ [Json.Document](https://msdn.microsoft.com/en-us/library/mt260861.aspx)
++ [Table.FromRows](https://msdn.microsoft.com/en-us/library/mt260791.aspx)

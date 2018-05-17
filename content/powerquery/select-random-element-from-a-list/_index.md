@@ -1,6 +1,6 @@
 +++
 title = "Select Random Element From A List"
-date = "2018-04-01"
+date = "2018-05-16"
 +++
 
 ## Create List of Character Elements
@@ -33,6 +33,8 @@ in
 Results will vary because of the random position of the selection
 
 ## References
-1. [Number.RandomBetween](https://msdn.microsoft.com/en-us/library/mt253327.aspx), Power Query M function reference
-2. [Number.RoundDown](https://msdn.microsoft.com/en-us/library/mt253362.aspx), Power Query M function reference
-3. [List.Count](https://msdn.microsoft.com/en-us/library/mt253591.aspx), Power Query M function reference
+### Power Query M Reference
+
++ [Number.RandomBetween](https://msdn.microsoft.com/en-us/library/mt253327.aspx)
++ [Number.RoundDown](https://msdn.microsoft.com/en-us/library/mt253362.aspx)
+3. [List.Count](https://msdn.microsoft.com/en-us/library/mt253591.aspx)

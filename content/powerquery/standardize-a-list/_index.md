@@ -1,14 +1,25 @@
 +++
 title = "Standardize A List"
-date = "2018-04-01"
+date = "2018-05-16"
 +++
 
 ## Preliminaries
 ```javascript
 let
     // load custom StandardScaler function from Github Gist
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/obJuVM")),
-    StandardScaler = Expression.Evaluate(Source, #shared)
+    StandardScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/obJuVM")), 
+        [
+            #"List.Average" = List.Average,
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"List.StandardDeviation" = List.StandardDeviation,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    )
 in
     StandardScaler
 ```
@@ -16,8 +27,19 @@ in
 ## Create a List
 ```javascript
 let
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/obJuVM")),
-    StandardScaler = Expression.Evaluate(Source, #shared),
+    StandardScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/obJuVM")), 
+        [
+            #"List.Average" = List.Average,
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"List.StandardDeviation" = List.StandardDeviation,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    ),
     list = {1,2,3,4,5,6,7,8,9}
 in
     list
@@ -38,8 +60,19 @@ in
 ```javascript
 let
     // Rescale list values to have a mean of 0 and a standard deviation of 1
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/obJuVM")),
-    StandardScaler = Expression.Evaluate(Source, #shared),
+    StandardScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://goo.gl/obJuVM")), 
+        [
+            #"List.Average" = List.Average,
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"List.StandardDeviation" = List.StandardDeviation,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.Type" = Value.Type
+        ]
+    ),
     list = {1,2,3,4,5,6,7,8,9},
     results = StandardScaler(list)
 in
@@ -58,6 +91,12 @@ in
 |9    |1.460593487
 
 ## References
-1. [StandardScaler](https://gist.github.com/tonmcg/1630f9f4faa17a6d6a7eed5d10eb310f) by Tony McGovern
-2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
-3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
+### Custom Function Reference
++ [StandardScaler](https://gist.github.com/tonmcg/1630f9f4faa17a6d6a7eed5d10eb310f) by Tony McGovern
+
+### Power Query M Reference
++ [List.Average](https://msdn.microsoft.com/en-us/query-bi/m/list-average)
++ [List.Buffer](https://msdn.microsoft.com/en-us/query-bi/m/list-buffer)
++ [List.Count](https://msdn.microsoft.com/en-us/query-bi/m/list-count)
++ [List.Generate](https://msdn.microsoft.com/en-us/query-bi/m/list-generate)
++ [List.StandardDeviation](https://msdn.microsoft.com/en-us/query-bi/m/list-standarddeviation)

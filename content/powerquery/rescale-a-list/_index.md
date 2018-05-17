@@ -1,6 +1,6 @@
 +++
 title = "Rescale A List"
-date = "2018-04-01"
+date = "2018-05-16"
 +++
 
 ## Preliminaries
@@ -123,4 +123,12 @@ in
 |9	  |1
 
 ## References
-1. [MinMaxScaler](https://gist.github.com/tonmcg/36f23a0e3d3cec71577cc59ba6b9298c) by Tony McGovern
+### Custom Function Reference
++ [MinMaxScaler](https://gist.github.com/tonmcg/36f23a0e3d3cec71577cc59ba6b9298c) by Tony McGovern
+
+### Power Query M Reference
++ [List.Buffer](https://msdn.microsoft.com/en-us/query-bi/m/list-buffer)
++ [List.Count](https://msdn.microsoft.com/en-us/query-bi/m/list-count)
++ [List.Min](https://msdn.microsoft.com/en-us/query-bi/m/list-min)
++ [List.Max](https://msdn.microsoft.com/en-us/query-bi/m/list-max)
++ [List.Generate](https://msdn.microsoft.com/en-us/query-bi/m/list-generate)
