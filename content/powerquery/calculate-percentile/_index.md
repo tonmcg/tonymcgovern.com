@@ -8,7 +8,7 @@ date = "2018-05-16"
 let
     // load custom Percentile function from Github Gist
     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/THkj1A")),
+        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
@@ -28,8 +28,9 @@ in
 ```javascript
 let
     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/THkj1A")),
+        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
+            #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
             #"Order.Ascending" = Order.Ascending,
@@ -66,8 +67,9 @@ in
 ```javascript
 let
     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/THkj1A")),
+        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
+            #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
             #"Order.Ascending" = Order.Ascending,
@@ -90,8 +92,9 @@ in
 ```javascript
 let
     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/THkj1A")),
+        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
+            #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
             #"Order.Ascending" = Order.Ascending,
@@ -116,7 +119,7 @@ in
 ```javascript
 let
     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/THkj1A")),
+        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,

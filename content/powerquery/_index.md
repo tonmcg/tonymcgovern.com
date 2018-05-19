@@ -32,6 +32,7 @@ date = "2018-05-16"
 ## Connecting to APIs
 + [United States Census Bureau API](census/)
 + [Twitter API](twitter/)
++ [GitHub Gists](github/)
 
 ## United States Geographies
 + [Get U.S. States](census/get-us-states/)
