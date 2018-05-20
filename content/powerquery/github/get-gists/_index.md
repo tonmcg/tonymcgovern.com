@@ -6,61 +6,63 @@ date = "2018-05-19"
 ## Preliminaries
 ```javascript
 let
-  GetGists = Expression.Evaluate(
-    Text.FromBinary(Web.Contents("http://bit.ly/GithubGetGists")),
-    [
-      #"ExtraValues.Error" = ExtraValues.Error,
-      #"JoinKind.FullOuter" = JoinKind.FullOuter,
-      #"Json.Document" = Json.Document,
-      #"List.Count" = List.Count,
-      #"List.Generate" = List.Generate,
-      #"Record.AddField" = Record.AddField,
-      #"Record.Field" = Record.Field,
-      #"Record.FieldValues" = Record.FieldValues,
-      #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
-      #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
-      #"Table.ExpandTableColumn" = Table.ExpandTableColumn,
-      #"Table.FromList" = Table.FromList,
-      #"Table.NestedJoin" = Table.NestedJoin,
-      #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-      #"Value.ReplaceType" = Value.ReplaceType,
-      #"Value.Type" = Value.Type,
-      #"Web.Contents" = Web.Contents
-    ]
-  )
+     GetGists = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/GithubGetGists")),
+        [
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Int64.Type" = Int64.Type,
+            #"JoinKind.FullOuter" = JoinKind.FullOuter,
+            #"Json.Document" = Json.Document,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"Record.AddField" = Record.AddField,
+            #"Record.Field" = Record.Field,
+            #"Record.FieldValues" = Record.FieldValues,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.ExpandTableColumn" = Table.ExpandTableColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Table.NestedJoin" = Table.NestedJoin,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents
+        ]
+    )
 in
-  GetGists
+     GetGists
 ```
 
 ## Get All Gists for a Specified User
 ```javascript
 let
-  GetGists = Expression.Evaluate(
-    Text.FromBinary(Web.Contents("http://bit.ly/GithubGetGists")),
-    [
-      #"ExtraValues.Error" = ExtraValues.Error,
-      #"JoinKind.FullOuter" = JoinKind.FullOuter,
-      #"Json.Document" = Json.Document,
-      #"List.Count" = List.Count,
-      #"List.Generate" = List.Generate,
-      #"Record.AddField" = Record.AddField,
-      #"Record.Field" = Record.Field,
-      #"Record.FieldValues" = Record.FieldValues,
-      #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
-      #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
-      #"Table.ExpandTableColumn" = Table.ExpandTableColumn,
-      #"Table.FromList" = Table.FromList,
-      #"Table.NestedJoin" = Table.NestedJoin,
-      #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-      #"Value.ReplaceType" = Value.ReplaceType,
-      #"Value.Type" = Value.Type,
-      #"Web.Contents" = Web.Contents
-    ]
-  ),
-  // return meta data and specific data on all Gists by Imke Feldmann 
-  results = GetGists("ImkeF")
+     GetGists = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/GithubGetGists")),
+        [
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Int64.Type" = Int64.Type,
+            #"JoinKind.FullOuter" = JoinKind.FullOuter,
+            #"Json.Document" = Json.Document,
+            #"List.Count" = List.Count,
+            #"List.Generate" = List.Generate,
+            #"Record.AddField" = Record.AddField,
+            #"Record.Field" = Record.Field,
+            #"Record.FieldValues" = Record.FieldValues,
+            #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
+            #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.ExpandTableColumn" = Table.ExpandTableColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Table.NestedJoin" = Table.NestedJoin,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents
+        ]
+    ),
+    // return meta data and specific data on all Gists by Imke Feldmann 
+    results = GetGists("ImkeF")
 in
-  results
+    results
 ```
 |    |id                               |filename                |type       |... |truncated
 |:--:|:--------------------------------|:-----------------------|:----------|:---|--------:
