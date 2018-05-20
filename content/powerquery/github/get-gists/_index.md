@@ -1,6 +1,6 @@
 +++
 title = "Get All Gists"
-date = "2018-05-19"
+date = "2018-05-20"
 +++
 
 ## Preliminaries
