@@ -6,10 +6,12 @@ date = "2018-05-19"
 ## Preliminaries
 ```javascript
 let
-     GetGists = Expression.Evaluate(
+    // load custom GetGists function from GitHubGist
+    GetGists = Expression.Evaluate(
         Text.FromBinary(Web.Contents("http://bit.ly/GithubGetGists")),
         [
             #"ExtraValues.Error" = ExtraValues.Error,
+            #"GetGists" = GetGists,
             #"Int64.Type" = Int64.Type,
             #"JoinKind.FullOuter" = JoinKind.FullOuter,
             #"Json.Document" = Json.Document,
@@ -33,13 +35,14 @@ in
      GetGists
 ```
 
-## Get All Gists for a Specified User
+## Get Gists Data for a Specified User
 ```javascript
 let
-     GetGists = Expression.Evaluate(
+    GetGists = Expression.Evaluate(
         Text.FromBinary(Web.Contents("http://bit.ly/GithubGetGists")),
         [
             #"ExtraValues.Error" = ExtraValues.Error,
+            #"GetGists" = GetGists,
             #"Int64.Type" = Int64.Type,
             #"JoinKind.FullOuter" = JoinKind.FullOuter,
             #"Json.Document" = Json.Document,
