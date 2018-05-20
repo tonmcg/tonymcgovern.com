@@ -1,34 +1,35 @@
 +++
 title = "Create Amortization Schedule"
-date = "2018-05-16"
+date = "2018-05-19"
 +++
 
 ## Preliminaries
 ```javascript
 let
-    // load custom CreateAmortization function from Github Gist
-    CreateAmortization = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
+     // load custom CreateAmortization function from Github Gist
+     CreateAmortization = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/TableCreateAmortization")),
         [
-            #"List.First" = List.First,
-            #"List.Select" = List.Select,
-            #"Number.Power" = Number.Power,
-            #"Int64.Type" = Int64.Type,
-            #"Table.FromList" = Table.FromList,
-            #"List.Generate" = List.Generate,
             #"Date.AddDays" = Date.AddDays,
             #"Date.AddMonths" = Date.AddMonths,
             #"Date.AddQuarters" = Date.AddQuarters,
             #"Date.AddYears" = Date.AddYears,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Int64.Type" = Int64.Type,
+            #"List.First" = List.First,
+            #"List.Generate" = List.Generate,
+            #"List.Select" = List.Select,
+            #"Number.Power" = Number.Power,
             #"Number.Round" = Number.Round,
             #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
-            #"ExtraValues.Error" = ExtraValues.Error,
             #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Table.FromRecords" = Table.FromRecords,
             #"Value.ReplaceType" = Value.ReplaceType
         ]
     )
 in
-    CreateAmortization
+     CreateAmortization
 ```
 
 ## Create Amortization Table
@@ -36,23 +37,24 @@ in
 let
     // Create an amortization schedule with a 1000 initial amount, 5% interest rate, for 5 years, 
     // and is compounded semi-annually
-    CreateAmortization = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
+     CreateAmortization = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/TableCreateAmortization")),
         [
-            #"List.First" = List.First,
-            #"List.Select" = List.Select,
-            #"Number.Power" = Number.Power,
-            #"Int64.Type" = Int64.Type,
-            #"Table.FromList" = Table.FromList,
-            #"List.Generate" = List.Generate,
             #"Date.AddDays" = Date.AddDays,
             #"Date.AddMonths" = Date.AddMonths,
             #"Date.AddQuarters" = Date.AddQuarters,
             #"Date.AddYears" = Date.AddYears,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Int64.Type" = Int64.Type,
+            #"List.First" = List.First,
+            #"List.Generate" = List.Generate,
+            #"List.Select" = List.Select,
+            #"Number.Power" = Number.Power,
             #"Number.Round" = Number.Round,
             #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
-            #"ExtraValues.Error" = ExtraValues.Error,
             #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Table.FromRecords" = Table.FromRecords,
             #"Value.ReplaceType" = Value.ReplaceType
         ]
     ),
@@ -73,23 +75,24 @@ in
 let
     // Create an amortization schedule with a 1000 initial amount, 5% interest rate, for 5 years, 
     // is compounded semi-annually, and starts on January 1, 2018 
-    CreateAmortization = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/v7LPME")),
+     CreateAmortization = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/TableCreateAmortization")),
         [
-            #"List.First" = List.First,
-            #"List.Select" = List.Select,
-            #"Number.Power" = Number.Power,
-            #"Int64.Type" = Int64.Type,
-            #"Table.FromList" = Table.FromList,
-            #"List.Generate" = List.Generate,
             #"Date.AddDays" = Date.AddDays,
             #"Date.AddMonths" = Date.AddMonths,
             #"Date.AddQuarters" = Date.AddQuarters,
             #"Date.AddYears" = Date.AddYears,
+            #"ExtraValues.Error" = ExtraValues.Error,
+            #"Int64.Type" = Int64.Type,
+            #"List.First" = List.First,
+            #"List.Generate" = List.Generate,
+            #"List.Select" = List.Select,
+            #"Number.Power" = Number.Power,
             #"Number.Round" = Number.Round,
             #"Splitter.SplitByNothing" = Splitter.SplitByNothing,
-            #"ExtraValues.Error" = ExtraValues.Error,
             #"Table.ExpandRecordColumn" = Table.ExpandRecordColumn,
+            #"Table.FromList" = Table.FromList,
+            #"Table.FromRecords" = Table.FromRecords,
             #"Value.ReplaceType" = Value.ReplaceType
         ]
     ),
@@ -106,7 +109,25 @@ in
 |11	  |10 	  |1/1/23	    |111.47	    |2.79	    |111.47	   |114.26	|0          |
 
 ## References
+### Custom Function Reference
 + [CreateAmortization](https://gist.github.com/tonmcg/0748ad9fcfb542aada7a2c153cfb0fb9) by Tony McGovern
+
+### Power Query M Reference
++ {{<urls function="date-adddays">}}Date.AddDays{{</urls>}}
++ {{<urls function="date-addmonths">}}Date.AddMonths{{</urls>}}
++ {{<urls function="date-addquarters">}}Date.AddQuarters{{</urls>}}
++ {{<urls function="date-addyears">}}Date.AddYears{{</urls>}}
++ {{<urls function="extravalues-error">}}ExtraValues.Error{{</urls>}}
++ {{<urls function="list-first">}}List.First{{</urls>}}
++ {{<urls function="list-generate">}}List.Generate{{</urls>}}
++ {{<urls function="list-select">}}List.Select{{</urls>}}
++ {{<urls function="number-power">}}Number.Power{{</urls>}}
++ {{<urls function="number-round">}}Number.Round{{</urls>}}
++ {{<urls function="splitter-splitbynothing">}}Splitter.SplitByNothing{{</urls>}}
++ {{<urls function="table-expandrecordcolumn">}}Table.ExpandRecordColumn{{</urls>}}
++ {{<urls function="table-fromlist">}}Table.FromList{{</urls>}}
++ {{<urls function="table-fromrecords">}}Table.FromRecords{{</urls>}}
++ {{<urls function="value-replacetype">}}Value.ReplaceType{{</urls>}}
 
 ## Appendix: For Use on Power BI Service
 <div style="table-layout:fixed;display:table;width:100%;">

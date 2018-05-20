@@ -7,37 +7,38 @@ date = "2018-05-16"
 ```javascript
 let
     // load custom Percentile function from Github Gist
-    Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
-        [
-            #"List.Count" = List.Count,
-            #"List.Sort" = List.Sort,
-            #"Order.Ascending" = Order.Ascending,
-            #"Number.IntegerDivide" = Number.IntegerDivide,
-            #"Number.Mod" = Number.Mod,
-            #"Value.ReplaceType" = Value.ReplaceType,
-            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-            #"Value.Type" = Value.Type
-        ]
-    )
-in
-    Percentile
-```
-
-## Create list of numerical elements
-```javascript
-let
-    Percentile = Expression.Evaluate(
+     Percentile = Expression.Evaluate(
         Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
-            #"Order.Ascending" = Order.Ascending,
             #"Number.IntegerDivide" = Number.IntegerDivide,
             #"Number.Mod" = Number.Mod,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Order.Ascending" = Order.Ascending,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type
+        ]
+    )
+in
+     Percentile
+```
+
+## Create list of numerical elements
+```javascript
+let
+     Percentile = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
+        [
+            #"List.Buffer" = List.Buffer,
+            #"List.Count" = List.Count,
+            #"List.Sort" = List.Sort,
+            #"Number.IntegerDivide" = Number.IntegerDivide,
+            #"Number.Mod" = Number.Mod,
+            #"Order.Ascending" = Order.Ascending,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -66,17 +67,17 @@ in
 ## Calculate 90th percentile value from the list
 ```javascript
 let
-    Percentile = Expression.Evaluate(
+     Percentile = Expression.Evaluate(
         Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
-            #"Order.Ascending" = Order.Ascending,
             #"Number.IntegerDivide" = Number.IntegerDivide,
             #"Number.Mod" = Number.Mod,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Order.Ascending" = Order.Ascending,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -91,17 +92,17 @@ in
 ## Alternative 1 - Calculate 90th percentile value from the list (R6 Method)
 ```javascript
 let
-    Percentile = Expression.Evaluate(
+     Percentile = Expression.Evaluate(
         Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
-            #"Order.Ascending" = Order.Ascending,
             #"Number.IntegerDivide" = Number.IntegerDivide,
             #"Number.Mod" = Number.Mod,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Order.Ascending" = Order.Ascending,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -118,16 +119,17 @@ in
 ## Alternative 2 - Calculate 90th percentile value from the list (R8 Method)
 ```javascript
 let
-    Percentile = Expression.Evaluate(
+     Percentile = Expression.Evaluate(
         Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
         [
+            #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
             #"List.Sort" = List.Sort,
-            #"Order.Ascending" = Order.Ascending,
             #"Number.IntegerDivide" = Number.IntegerDivide,
             #"Number.Mod" = Number.Mod,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Order.Ascending" = Order.Ascending,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -147,7 +149,12 @@ in
 + [7.2.6.2.Percentiles](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) NIST/SEMATECH e-Handbook of Statistical Methods
 
 ### Power Query M Reference
-+ [Number.IntegerDivide](https://msdn.microsoft.com/en-us/query-bi/m/number-integerdivide)
-+ [Number.Mod](https://msdn.microsoft.com/en-us/query-bi/m/number-mod)
-+ [List.Sort](https://msdn.microsoft.com/en-us/query-bi/m/list-sort)
-+ [List.Count](https://msdn.microsoft.com/en-us/query-bi/m/list-count)
++ {{<urls function="list-buffer">}}List.Buffer{{</urls>}}
++ {{<urls function="list-count">}}List.Count{{</urls>}}
++ {{<urls function="list-sort">}}List.Sort{{</urls>}}
++ {{<urls function="number-integerdivide">}}Number.IntegerDivide{{</urls>}}
++ {{<urls function="number-mod">}}Number.Mod{{</urls>}}
++ {{<urls function="order-ascending">}}Order.Ascending{{</urls>}}
++ {{<urls function="value-replacemetadata">}}Value.ReplaceMetadata{{</urls>}}
++ {{<urls function="value-replacetype">}}Value.ReplaceType{{</urls>}}
++ {{<urls function="value-type">}}Value.Type{{</urls>}}

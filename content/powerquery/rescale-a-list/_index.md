@@ -1,42 +1,44 @@
 +++
 title = "Rescale A List"
-date = "2018-05-16"
+date = "2018-05-19"
 +++
 
 ## Preliminaries
 ```javascript
 let
     // load custom MinMaxScaler function from Github Gist
-    MinMaxScaler = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+     MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/ListMinMaxScaler")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
-            #"List.Min" = List.Min,
-            #"List.Max" = List.Max,
             #"List.Generate" = List.Generate,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"List.Max" = List.Max,
+            #"List.Min" = List.Min,
+            #"List.Transform" = List.Transform,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     )
 in
-    MinMaxScaler
+     MinMaxScaler
 ```
 
 ## Create a List
 ```javascript
 let
-    MinMaxScaler = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+     MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/ListMinMaxScaler")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
-            #"List.Min" = List.Min,
-            #"List.Max" = List.Max,
             #"List.Generate" = List.Generate,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"List.Max" = List.Max,
+            #"List.Min" = List.Min,
+            #"List.Transform" = List.Transform,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -59,16 +61,17 @@ in
 ## Rescale a List Between 0 and 1
 ```javascript
 let
-    MinMaxScaler = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+     MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/ListMinMaxScaler")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
-            #"List.Min" = List.Min,
-            #"List.Max" = List.Max,
             #"List.Generate" = List.Generate,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"List.Max" = List.Max,
+            #"List.Min" = List.Min,
+            #"List.Transform" = List.Transform,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -92,16 +95,17 @@ in
 ## Rescale a List Between -1 and 1
 ```javascript
 let
-    MinMaxScaler = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/fhtyZs")),
+     MinMaxScaler = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/ListMinMaxScaler")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
-            #"List.Min" = List.Min,
-            #"List.Max" = List.Max,
             #"List.Generate" = List.Generate,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"List.Max" = List.Max,
+            #"List.Min" = List.Min,
+            #"List.Transform" = List.Transform,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.Type" = Value.Type
         ]
     ),
@@ -127,8 +131,12 @@ in
 + [MinMaxScaler](https://gist.github.com/tonmcg/36f23a0e3d3cec71577cc59ba6b9298c) by Tony McGovern
 
 ### Power Query M Reference
-+ [List.Buffer](https://msdn.microsoft.com/en-us/query-bi/m/list-buffer)
-+ [List.Count](https://msdn.microsoft.com/en-us/query-bi/m/list-count)
-+ [List.Min](https://msdn.microsoft.com/en-us/query-bi/m/list-min)
-+ [List.Max](https://msdn.microsoft.com/en-us/query-bi/m/list-max)
-+ [List.Generate](https://msdn.microsoft.com/en-us/query-bi/m/list-generate)
++ {{<urls function="list-buffer">}}List.Buffer{{</urls>}}
++ {{<urls function="list-count">}}List.Count{{</urls>}}
++ {{<urls function="list-generate">}}List.Generate{{</urls>}}
++ {{<urls function="list-max">}}List.Max{{</urls>}}
++ {{<urls function="list-min">}}List.Min{{</urls>}}
++ {{<urls function="list-transform">}}List.Transform{{</urls>}}
++ {{<urls function="value-replacemetadata">}}Value.ReplaceMetadata{{</urls>}}
++ {{<urls function="value-replacetype">}}Value.ReplaceType{{</urls>}}
++ {{<urls function="value-type">}}Value.Type{{</urls>}}

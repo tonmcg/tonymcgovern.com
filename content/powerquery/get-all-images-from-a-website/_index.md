@@ -1,53 +1,55 @@
 +++
 title = "Get All Images From A Website"
-date = "2018-04-01"
+date = "2018-05-19"
 +++
 
 ## Preliminaries
 ```javascript
 let
     // load custom GetImages function from Github Gist
-    GetImages = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/7HSPQS")), 
+     GetImages = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/HtmlGetImages")),
         [
             #"List.Combine" = List.Combine,
-            #"Text.From" = Text.From,
-            #"Text.FromBinary" = Text.FromBinary,
             #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
             #"Text.Combine" = Text.Combine,
-            #"Text.StartsWith" = Text.StartsWith,
+            #"Text.End" = Text.End,
             #"Text.EndsWith" = Text.EndsWith,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Text.Start" = Text.Start,
+            #"Text.StartsWith" = Text.StartsWith,
             #"Uri.Parts" = Uri.Parts,
-            #"Web.Contents" = Web.Contents,
-            #"Web.Page" = Web.Page,
-            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-            #"Value.Type" = Value.Type
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents
         ]
     )
 in
-    GetImages
+     GetImages
 ```
 
 ## Get All Images from a Website
 ```javascript
 let
-    GetImages = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/7HSPQS")), 
+     GetImages = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/HtmlGetImages")),
         [
             #"List.Combine" = List.Combine,
-            #"Text.From" = Text.From,
-            #"Text.FromBinary" = Text.FromBinary,
             #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
             #"Text.Combine" = Text.Combine,
-            #"Text.StartsWith" = Text.StartsWith,
+            #"Text.End" = Text.End,
             #"Text.EndsWith" = Text.EndsWith,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Text.Start" = Text.Start,
+            #"Text.StartsWith" = Text.StartsWith,
             #"Uri.Parts" = Uri.Parts,
-            #"Web.Contents" = Web.Contents,
-            #"Web.Page" = Web.Page,
-            #"Value.ReplaceType" = Value.ReplaceType,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-            #"Value.Type" = Value.Type
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents
         ]
     ),
     // return all from the Der Speigel International homepage
@@ -74,13 +76,17 @@ in
 + [GetImages](https://gist.github.com/tonmcg/1d09b39d2c66dd6dfbe27ce0ff5401fd) by Tony McGovern
 
 ### Power Query M Reference
-+ [List.Combine](https://msdn.microsoft.com/en-us/query-bi/m/list-combine)
-+ [Text.From](https://msdn.microsoft.com/en-us/query-bi/m/text-from)
-+ [Text.FromBinary](https://msdn.microsoft.com/en-us/query-bi/m/text-frombinary)
-+ [Text.BetweenDelimiters](https://msdn.microsoft.com/en-us/query-bi/m/text-betweendelimiters)
-+ [Text.Combine](https://msdn.microsoft.com/en-us/query-bi/m/text-combine)
-+ [Text.StartsWith](https://msdn.microsoft.com/en-us/query-bi/m/text-startswith)
-+ [Text.EndsWith](https://msdn.microsoft.com/en-us/query-bi/m/text-endswith)
-+ [Uri.Parts](https://msdn.microsoft.com/en-us/query-bi/m/uri-parts)
-+ [Web.Contents](https://msdn.microsoft.com/en-us/query-bi/m/web-contents)
-+ [Web.Page](https://msdn.microsoft.com/en-us/query-bi/m/web-page)
++ {{<urls function="list-combine">}}List.Combine{{</urls>}}
++ {{<urls function="text-betweendelimiters">}}Text.BetweenDelimiters{{</urls>}}
++ {{<urls function="text-combine">}}Text.Combine{{</urls>}}
++ {{<urls function="text-end">}}Text.End{{</urls>}}
++ {{<urls function="text-endswith">}}Text.EndsWith{{</urls>}}
++ {{<urls function="text-from">}}Text.From{{</urls>}}
++ {{<urls function="text-frombinary">}}Text.FromBinary{{</urls>}}
++ {{<urls function="text-start">}}Text.Start{{</urls>}}
++ {{<urls function="text-startswith">}}Text.StartsWith{{</urls>}}
++ {{<urls function="uri-parts">}}Uri.Parts{{</urls>}}
++ {{<urls function="value-replacemetadata">}}Value.ReplaceMetadata{{</urls>}}
++ {{<urls function="value-replacetype">}}Value.ReplaceType{{</urls>}}
++ {{<urls function="value-type">}}Value.Type{{</urls>}}
++ {{<urls function="web-contents">}}Web.Contents{{</urls>}}

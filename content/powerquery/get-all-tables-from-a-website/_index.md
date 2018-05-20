@@ -1,44 +1,46 @@
 +++
 title = "Get All Tables From A Website"
-date = "2018-05-16"
+date = "2018-05-19"
 +++
 
 ## Preliminaries
 ```javascript
 let
-    GetTables = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/WkPWo9")), 
+     GetTables = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/HtmlGetTables")),
         [
-            #"Text.FromBinary" = Text.FromBinary,
+            #"Table.SelectRows" = Table.SelectRows,
             #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
             #"Text.Combine" = Text.Combine,
-            #"Table.SelectRows" = Table.SelectRows,
-            #"Web.Contents" = Web.Contents,
-            #"Web.Page" = Web.Page,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-            #"Value.Type" = Value.Type
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page
         ]
     )
 in
-    GetTables
+     GetTables
 ```
 
 ## Get All Tables from a Website
 ```javascript
 let
-    GetTables = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("https://goo.gl/WkPWo9")), 
+     GetTables = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/HtmlGetTables")),
         [
-            #"Text.FromBinary" = Text.FromBinary,
+            #"Table.SelectRows" = Table.SelectRows,
             #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
             #"Text.Combine" = Text.Combine,
-            #"Table.SelectRows" = Table.SelectRows,
-            #"Web.Contents" = Web.Contents,
-            #"Web.Page" = Web.Page,
-            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
             #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
-            #"Value.Type" = Value.Type
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page
         ]
     ),
     // return all tables on the United States Census Bureau 
@@ -59,9 +61,13 @@ in
 + [GetTables](https://gist.github.com/tonmcg/1173759b95943b2b9ed290b9edbe74d3) by Tony McGovern
 
 ### Power Query M Reference
-+ [Text.FromBinary](https://msdn.microsoft.com/en-us/query-bi/m/text-frombinary)
-+ [Text.BetweenDelimiters](https://msdn.microsoft.com/en-us/query-bi/m/text-betweendelimiters)
-+ [Text.Combine](https://msdn.microsoft.com/en-us/query-bi/m/text-combine)
-+ [Table.SelectRows](https://msdn.microsoft.com/en-us/query-bi/m/table-selectrows)
-+ [Web.Contents](https://msdn.microsoft.com/en-us/query-bi/m/web-contents)
-+ [Web.Page](https://msdn.microsoft.com/en-us/query-bi/m/web-page)
++ {{<urls function="table-selectrows">}}Table.SelectRows{{</urls>}}
++ {{<urls function="text-betweendelimiters">}}Text.BetweenDelimiters{{</urls>}}
++ {{<urls function="text-combine">}}Text.Combine{{</urls>}}
++ {{<urls function="text-from">}}Text.From{{</urls>}}
++ {{<urls function="text-frombinary">}}Text.FromBinary{{</urls>}}
++ {{<urls function="value-replacemetadata">}}Value.ReplaceMetadata{{</urls>}}
++ {{<urls function="value-replacetype">}}Value.ReplaceType{{</urls>}}
++ {{<urls function="value-type">}}Value.Type{{</urls>}}
++ {{<urls function="web-contents">}}Web.Contents{{</urls>}}
++ {{<urls function="web-page">}}Web.Page{{</urls>}}
