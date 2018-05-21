@@ -30,9 +30,9 @@ date = "2018-05-16"
 + [Unzip File](unzip-file/)
 
 ## Connecting to APIs
-+ [United States Census Bureau API](census/)
-+ [Twitter API](twitter/)
-+ [GitHub Gists](github/)
++ [United States Census Bureau](census/)
++ [Twitter](twitter/)
++ [GitHub](github/)
 
 ## United States Geographies
 + [Get U.S. States](census/get-us-states/)

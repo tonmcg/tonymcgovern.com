@@ -1,9 +1,9 @@
 +++
-title = "Power Query M Technical Notes: Twitter API"
-date = "2018-04-02"
+title = "Power Query M Technical Notes: PowerTweet"
+date = "2018-05-21"
 +++
 
-## Twitter API
+## PowerTweet: Twitter API
 + [Get OAuth Token](get-token/)
 + [Get Timeline](get-timeline/)
 + [Get Followers](get-followers/)
@@ -18,6 +18,6 @@ date = "2018-04-02"
 + Get Trends (IN DEVELOPMENT)
 + Search Users (IN DEVELOPMENT)
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/tonmcg/powertweet/issues/) or [ask me on Twitter](https://twitter.com/tonmcg).
+{{<repos repo="powertweet">}}
 
 Thanks for reading!

@@ -1,23 +1,59 @@
 +++
 title = "Get U.S. States"
-date = "2018-04-02"
+date = "2018-05-21"
 +++
 
 ## Preliminaries
 ```javascript
 let
-    // load custom GetStates function from Github Gist
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/wVisz9")),
-    GetStates = Expression.Evaluate(Source, #shared)
+    // load custom GetStates function from GitHubGist
+    GetStates = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/USCensusGetStates")),
+        [
+            #"Expression.Evaluate" = Expression.Evaluate,
+            #"Table.Combine" = Table.Combine,
+            #"Table.FromRecords" = Table.FromRecords,
+            #"Table.RenameColumns" = Table.RenameColumns,
+            #"Table.SelectColumns" = Table.SelectColumns,
+            #"Table.SelectRows" = Table.SelectRows,
+            #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
+            #"Text.Combine" = Text.Combine,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page
+        ]
+    )
 in
-    GetStates
+     GetStates
 ```
 
 ## Get U.S. States Including Territories
 ```javascript
 let 
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/wVisz9")),
-    GetStates = Expression.Evaluate(Source, #shared),
+    GetStates = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/USCensusGetStates")),
+        [
+            #"Expression.Evaluate" = Expression.Evaluate,
+            #"Table.Combine" = Table.Combine,
+            #"Table.FromRecords" = Table.FromRecords,
+            #"Table.RenameColumns" = Table.RenameColumns,
+            #"Table.SelectColumns" = Table.SelectColumns,
+            #"Table.SelectRows" = Table.SelectRows,
+            #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
+            #"Text.Combine" = Text.Combine,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page
+        ]
+    ),
     results = GetStates(true)
 in
     results
@@ -33,8 +69,26 @@ in
 ## Get U.S. States Not Including Territories
 ```javascript
 let 
-    Source = Text.FromBinary(Web.Contents("https://goo.gl/wVisz9")),
-    GetStates = Expression.Evaluate(Source, #shared),
+    GetStates = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("http://bit.ly/USCensusGetStates")),
+        [
+            #"Expression.Evaluate" = Expression.Evaluate,
+            #"Table.Combine" = Table.Combine,
+            #"Table.FromRecords" = Table.FromRecords,
+            #"Table.RenameColumns" = Table.RenameColumns,
+            #"Table.SelectColumns" = Table.SelectColumns,
+            #"Table.SelectRows" = Table.SelectRows,
+            #"Text.BetweenDelimiters" = Text.BetweenDelimiters,
+            #"Text.Combine" = Text.Combine,
+            #"Text.From" = Text.From,
+            #"Text.FromBinary" = Text.FromBinary,
+            #"Value.ReplaceMetadata" = Value.ReplaceMetadata,
+            #"Value.ReplaceType" = Value.ReplaceType,
+            #"Value.Type" = Value.Type,
+            #"Web.Contents" = Web.Contents,
+            #"Web.Page" = Web.Page
+        ]
+    ),
     results = GetStates(false)
 in
     results
@@ -48,6 +102,22 @@ in
 |51   |Wyoming             |56         |WY
 
 ## References
-1. [GetStates](https://gist.github.com/tonmcg/a545cd94d798c687fc3ced139093e23e) by Tony McGovern
-2. [Text.FromBinary](https://msdn.microsoft.com/en-us/library/mt253365.aspx), Power Query M function reference
-3. [Web.Contents](https://msdn.microsoft.com/en-us/library/mt260892.aspx), Power Query M function reference
+### Custom Function Reference
++ [GetStates](https://gist.github.com/tonmcg/a545cd94d798c687fc3ced139093e23e) by Tony McGovern
+
+### Power Query M Reference
++ {{<urls function="expression-evaluate">}}Expression.Evaluate{{</urls>}}
++ {{<urls function="table-combine">}}Table.Combine{{</urls>}}
++ {{<urls function="table-fromrecords">}}Table.FromRecords{{</urls>}}
++ {{<urls function="table-renamecolumns">}}Table.RenameColumns{{</urls>}}
++ {{<urls function="table-selectcolumns">}}Table.SelectColumns{{</urls>}}
++ {{<urls function="table-selectrows">}}Table.SelectRows{{</urls>}}
++ {{<urls function="text-betweendelimiters">}}Text.BetweenDelimiters{{</urls>}}
++ {{<urls function="text-combine">}}Text.Combine{{</urls>}}
++ {{<urls function="text-from">}}Text.From{{</urls>}}
++ {{<urls function="text-frombinary">}}Text.FromBinary{{</urls>}}
++ {{<urls function="value-replacemetadata">}}Value.ReplaceMetadata{{</urls>}}
++ {{<urls function="value-replacetype">}}Value.ReplaceType{{</urls>}}
++ {{<urls function="value-type">}}Value.Type{{</urls>}}
++ {{<urls function="web-contents">}}Web.Contents{{</urls>}}
++ {{<urls function="web-page">}}Web.Page{{</urls>}}
