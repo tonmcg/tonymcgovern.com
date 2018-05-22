@@ -33,6 +33,7 @@ date = "2018-05-16"
 + [United States Census Bureau](census/)
 + [Twitter](twitter/)
 + [GitHub](github/)
++ [Socrata](socrata/)
 
 ## United States Geographies
 + [Get U.S. States](census/get-us-states/)
