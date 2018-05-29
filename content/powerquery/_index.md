@@ -3,6 +3,9 @@ title = "Power Query M Technical Notes"
 date = "2018-05-16"
 +++
 
+## Text Manipulation
++ [Test Text for AlphaNumeric Characters](is-alphanumeric/)
+
 ## Lists Basics
 + [Select Random Element From a List](select-random-element-from-a-list/)
 + [Create List of Randomly Repeated Elements](create-list-of-randomly-repeated-elements/)
@@ -43,9 +46,8 @@ date = "2018-05-16"
 + Get GEOIDs for U.S. Geographies (IN DEVELOPMENT)
 + Get U.S. Place Names (IN DEVELOPMENT)
 
-## Creating Custom Colors
-+ [Get Top _n_ Colors From A Website](swatch-discovery-api)
-+ [Create Color Scheme From Base Color](color-api)
+## Color Palettes
++ [Creating Custom Report Color Palettes](report-palette/)
 
 Have questions or suggestions? Feel free to [ask me on Twitter](https://twitter.com/tonmcg).
 
