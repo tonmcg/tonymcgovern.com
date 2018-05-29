@@ -62,7 +62,7 @@ let
         ]
     ),
     // create a color scheme based off of one color
-    results = ColorAPI("#3b5998")
+    results = ColorAPI("3b5998")
 in
     results
 ```
@@ -92,7 +92,7 @@ let
         ]
     ),
     // create a 6-color scheme based off of one color
-    results = ColorAPI("#3b5998", 6)
+    results = ColorAPI("3b5998", 6)
 in
     results
 ```
