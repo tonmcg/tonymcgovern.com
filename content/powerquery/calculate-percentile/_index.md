@@ -6,9 +6,9 @@ date = "2018-05-16"
 ## Preliminaries
 ```javascript
 let
-    // load custom Percentile function from Github Gist
-     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
+    // load custom Percentile function from GitHubGist
+    Percentile = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://tinyurl.com/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
@@ -28,8 +28,8 @@ in
 ## Create list of numerical elements
 ```javascript
 let
-     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
+    Percentile = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://tinyurl.com/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
@@ -67,8 +67,8 @@ in
 ## Calculate 90th percentile value from the list
 ```javascript
 let
-     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
+    Percentile = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://tinyurl.com/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
@@ -92,8 +92,8 @@ in
 ## Alternative 1 - Calculate 90th percentile value from the list (R6 Method)
 ```javascript
 let
-     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
+    Percentile = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://tinyurl.com/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
@@ -119,8 +119,8 @@ in
 ## Alternative 2 - Calculate 90th percentile value from the list (R8 Method)
 ```javascript
 let
-     Percentile = Expression.Evaluate(
-        Text.FromBinary(Web.Contents("http://bit.ly/ListPercentile")),
+    Percentile = Expression.Evaluate(
+        Text.FromBinary(Web.Contents("https://tinyurl.com/ListPercentile")),
         [
             #"List.Buffer" = List.Buffer,
             #"List.Count" = List.Count,
