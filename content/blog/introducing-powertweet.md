@@ -1,6 +1,6 @@
 +++
 author = "Tony McGovern"
-categories = ["PowerTweet","M","Power Query"]
+categories = ["PowerTweet","Power Query M"]
 tags = ["vignette"]
 date = "2018-04-02"
 description = "Introduction to PowerTweet M functions"
