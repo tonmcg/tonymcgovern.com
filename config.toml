@@ -1,4 +1,4 @@
-baseurl = "https://www.tonymcgovern.com/"
+baseurl = "/"
 languageCode = "en-us"
 title = "Tony McGovern. Hacker. Artist. Storyteller. Data lover."
 theme = "hugo-future-imperfect"
@@ -9,11 +9,12 @@ googleAnalytics = "UA-116098628-1"
 pluralizeListTitles = false
 # Set the followings to true as part of your site SEO
 enableRobotsTXT = true
-canonifyURLs = true
+relativeurls = true
+canonifyurls = false
 
 [params]
   # Sets the meta tag description
-  description          = "Thoughts on data analysis, programming, and statistics, with an emphasis on R, JavaScript, Power Query, Azure, and Power BI"
+  description          = "Thoughts on data analysis, programming, and statistics, with an emphasis on R, JavaScript, and Power Query M"
   # Sets the navbarTitle that appears in the top left of the navigation bar
   navbarTitle          = "Tony McGovern"
   # Sets where "View More Posts" links
