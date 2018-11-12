@@ -10,7 +10,7 @@ pluralizeListTitles = false
 # Set the followings to true as part of your site SEO
 enableRobotsTXT = true
 relativeurls = true
-canonifyurls = false
+canonifyurls = true
 
 [params]
   # Sets the meta tag description
