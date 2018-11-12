@@ -39,11 +39,11 @@ in
 ```
 
 If we copy the code into the Advanced Editor, we should see the following function appear:
-{screenshot of ReadSocrata function in Advanced Editor in Excel}
+![Excel](/img/main/Excel_GitHub_Query.png)
 
 The screenshot shows the Power Query Editor rendering a function with multiple parameters. Not anywhere in the code above have we defined parameters. So where did they come from? The answer is I created a custom Power Query M function called `Socrata.ReadData()` and stored it in a repository on GitHub. I'm using the `Web.Contents()` function to return the [contents of the file](https://raw.githubusercontent.com/tonmcg/powersocrata/master/M/Socrata.ReadData.pq) and then the `Text.FromBinary()` function to render the text contained within. The parameters are defined within the function itself, which again, is stored on GitHub.
 
-The most interesting part of the function is the use of `Expression.Evaluate()`. At its simplest, `Expression.Evaluate()` [evaluates text and returns an evaluated value](https://docs.microsoft.com/en-us/powerquery-m/expression-evaluate). In our case, the evaluated text is the text within the `Socrata.ReadData()` function. The evaluated value is the actual function itself. Put another way, the combination of `Web.Contents()`, `Text.FromBinary()`, and `Expression.Evaluate()` makes a call to GitHub and returns the function's contents, renders the text of the function, and tells the Power Query engine to treat the rendered text as an M function.
+The most interesting part of the function is the use of `Expression.Evaluate()`. At its simplest, it [evaluates text and returns an evaluated value](https://docs.microsoft.com/en-us/powerquery-m/expression-evaluate). In our case, the evaluated text is the text within the `Socrata.ReadData()` function. The evaluated value is the actual function itself. Put another way, `Expression.Evaluate()` allows us to make a call to GitHub and return the function's contents, render the text of the function, and tell the Power Query engine to treat the rendered text as an M function.
 
 But that's only half of the answer. While the first parameter of the `Expression.Evaluate()` function requires an expression as text, the second parameter asks for the *environment* in which the text resides. In our example, I've defined the *envrionment* as the `#shared` variable. This pattern is what allows a Power Query M function that resides on GitHub to be executed in our Power Query Editor.
 
@@ -55,10 +55,10 @@ I'll not go into it here, but if you're interested in understanding the *environ
 
 ### Making it Work in Power BI Dataflows
 The most exciting part, however, is that this pattern works not only in Excel and PowerBI<sup id="a1">[[1]](#warning)</sup>, but through the browser as well [with Power BI Dataflows](https://www.tonymcgovern.com/blog/power-bi-dataflows/). We can get the `Socrata.ReadData()` function to work in dataflows by using the Power Query M code above in the Power BI dataflows Query Editor:
-{screenshot of ReadSocrata function in the Advanced Editor in Dataflows}
+![Dataflows](/img/main/Dataflows_GitHub_Query.png)
 
 
-If you want to see what this looks like, I [tweeted a GIF of this working](https://twitter.com/tonmcg/status/1060617265501126656) in Power BI dataflows.
+If you want to see what this looks like in action, I [tweeted a GIF of this working](https://twitter.com/tonmcg/status/1060617265501126656) in Power BI dataflows.
 
 There are boundless opportunities here to use GitHub's version control system to manage the entire timeline of changes made to projects that use Power Query M functions. Distributed teams around the world can simultaneously work on the code, understand what changes have been made, and collaborate at any time while maintaining source code integrity.
 
