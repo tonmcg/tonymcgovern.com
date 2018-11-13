@@ -64,4 +64,13 @@ There are boundless opportunities here to use GitHub's version control system to
 
 Do you use this pattern as well? What else have you found? Let me know in the comments section below.
 
+### Update 13 November 2018
+Matt Masson offers a comment in response to this blog post:
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Well the gateway infrastructure doesn&#39;t support dynamic data sources, and I&#39;m not sure if / when that will happen. I&#39;m also not sure it is wise to ever pull dynamic code from web locations.</p>&mdash; Matt Masson (@mattmasson) <a href="https://twitter.com/mattmasson/status/1062066012298842118?ref_src=twsrc%5Etfw">November 12, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+I think Matt is suggesting this pattern of storing M code on a separate server could open up your application or dataflow to an exploit. If so, he's absolutely correct. The code above is stored on a public GitHub repository, which means anyone can submit a pull request and sereptitiously inject code that can cause a security vulnerability.
+
+This solution is far from ideal. But the question remains: is there a secure version control system that allows me to see changes to my M code over time? If you have ideas, feel free to leave them in the comments below.
+
 <ol><li id="warning"><b>Be aware</b>: the use of the <code>#shared</code> variable within the <code>Expression.Evaluate()</code> function is not currently a supported feature, which means it can <a href="https://ssbi-blog.de/technical-topics-english/the-environment-concept-in-m-for-power-query-and-power-bi-desktop-part-3/#comment-134"> go away at any time</a>.</li></ol>
