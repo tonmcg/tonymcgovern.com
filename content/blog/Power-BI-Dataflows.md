@@ -15,7 +15,7 @@ type = "post"
 
 ## A Spectacular Power BI Update
 
-The November 2018 update of Power BI has been nothing short of spectacular. Among other things, this update introduces us to dataflows, one of the most aniticpated features to come out in a while. In essence, dataflows allows us to perform complex data preparation steps within the Power BI cloud service. It's now easier to build, standardize, and manage data preparation workflows across datasets stored on the service, all through the browser. In the coming months, dataflows will also let us leverage Azure Data Services like Azure Machine Learning for advanced analytics and AI. 
+The November 2018 update of Power BI has been nothing short of spectacular. Among other things, this update introduces us to dataflows, one of the most anticpated features to come out in a while. In essence, dataflows allows us to perform complex data preparation steps within the Power BI cloud service. It's now easier to build, standardize, and manage data preparation workflows across datasets stored on the service, all through the browser. In the coming months, dataflows will also let us leverage Azure Data Services like Azure Machine Learning for advanced analytics and AI. 
 
 Adi Regev has an excellent [introduction to dataflows](https://powerbi.microsoft.com/en-us/blog/introducing-power-bi-data-prep-wtih-dataflows/). 
 
