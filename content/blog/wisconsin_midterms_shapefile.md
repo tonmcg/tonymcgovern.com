@@ -1,6 +1,6 @@
 +++
 author = "Tony McGovern"
-categories = ["Mapbox","elections","Power BI","Tableau","shapefiles","mapshaper"]
+categories = ["Mapbox","elections","Power BI","shapefiles","mapshaper"]
 tags = ["post"]
 date = "2018-12-12"
 description = "See a map of the Wisconsin 2018 midterm election results from data provided by John Johnson."
