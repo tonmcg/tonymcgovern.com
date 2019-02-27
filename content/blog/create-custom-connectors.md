@@ -9,28 +9,35 @@ featured = ""
 featuredalt = ""
 featuredpath = ""
 linktitle = ""
-title = "Using Postman to Create a Custom Connection"
+title = "Using Postman to Create a Custom Connection to Socrata on the Power Platform"
 type = "post"
 
 +++
 
-#
+# 
 Posts: Socrata no auth -> Socrata app token -> (Socrata) Oauth 2.0
 
-## Connecting to Socrata Open Data Network
-love Socrata Open Data Network
-free, easy to use, deep and rich datasets, great documentation, no authentication
+## Connecting to REST APIs with the Power Platform
+Microsoft's Power Platform tools (Power BI, PowerApps, Flow) each allow me to connect to a variety of data sources on the web. One of my favorite data sources is the Socrata Open Data API (SODA), a RESTful API that offers developers tens of thousands of datasets from hundreds of Open Data Network entities like governments, non-profits, and NGOs from around the world. Among other things, SODA provides an API that's not only easy to use and understand, but also comes with great documentation that lets me interactively request real-world results.
 
-Discovery Metadata API
-is a RESTful web service [link to why this is important]
-tells me what's in the Open Data Network [link to what's her name's Shiny app]
-each dataset provides a title, description, and tags useful for discovery and text analysis
-I've performed Azure Cognitive Services TExt Analytics to find key phrases in each dataset
-contains download and usage information on each dataset
-endless possibilities with this API
-equally as important, their documentation is first rate
+This post is the first in a series that describes the methods and tools I use to create custom connectors in Power BI and Microsoft Flow (and by extension, Azure Logic Apps). I'll use SODA to illustrate important REST API concepts, such as requests endpoints, headers, methods, and body (or data). I'll also try to convince you that
 
-Workflow: Define, Test, Document REST API in Postman -> Convert to Swagger -> Import/Recreate
+My choice of SODA is important for another reason. Their API supports three of the most common ways developers access data through REST: 1) open access, 2) access keys, and 3) authorization tokens through the OAuth 2.0 protocol. This post focuses on creating custom connectors on REST APIs with open access. Future posts will focus on REST APIs that require the use of an access key and those that authenticate through the various OAuth 2.0 methods.
+
+## A Simplified Workflow
+Here's my simplified workflow to create custom Power BI and Flow (Azure Logice Apps) connectors for any REST API:
+
+- Define and Test API Requests with Postman
+- Convert Postman Collection JSON to OpenAPI (Swagger) Definition JSON
+- Import Swagger to Flow (or Azure Logic Apps) as a Custom Connector
+- (For Power BI only) Use Swagger as a Blueprint for a Custom Connector
+
+A quick note on Postman: it is the de-facto tool that helps developers quickly define requests for any given REST API. It requires far less trial-and-error to construct good requests with it than say, using Power BI alone. And it lets me easily see **all** the results of my requests, making it easy to debug my custom connectors in Power BI or Flow (Azure Logic Apps).
+
+Above all, Postman creates a JSON-formatted schema that defines endpoints for the REST API, which I easily convert to a Swagger definition file. Swagger files are the chief way to define a custom connector in Flow (Azure Logic Apps).
+
+
+
 
 Why not start in Power BI?
 Convergence of tools on the Power Platform
@@ -40,22 +47,6 @@ As I show later, starting with Postman will make debugging `Web.Contents` infini
 I've found it's best to start with the documentation at hand and define all the endpoints with Postman
 Credentials and authentication => though SODA is open, good developers should adhere to the API providers guidelines. In this case, SODA asks that we register an app for a key so that they can manage the wear on their servers
 
-
-Why Postman?
-de-facto tool to help interact, understand, and define how to connect to REST APIs
-extremely intuitive, lets you define variables at different levels, I can test endpoints and be able to get and set all request and response information are readily available
-less trial-and-error
-gives you response codes as well
-can simultaneously create connections in Power BI, inspect the request and response headers in the Postman console, and verify the results
-see the results and understand what to expect in Power BI
-
-When you're satisfied with the results, 
-Postman creates a JSON-formatted schema that defines endpoints in your API
-When building a custom connector in in Azure Logic Apps and Flow, this definition can easily be converted to another JSON-formatted schema => an OpenAPI (formerly Swagger) file
-
-Postman can even import already-defined Swagger files and to be used a Postman Collections
-
-Swagger files are the chief way to define a custom connector in Azure Logic Apps and Flow
 
 To recap:
 1. Postman helps me understand everything associated with a request and response to any REST API endpoint; request and response headers, data returned by the API, and logs these in a console
