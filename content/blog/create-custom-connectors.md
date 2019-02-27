@@ -27,11 +27,12 @@ My choice of SODA is important for another reason. Their API supports three of t
 ## A Simplified Workflow
 Here's my simplified workflow to create custom Power BI and Flow (Azure Logice Apps) connectors for any REST API:
 
-- Define and Test API Requests with Postman
+- [Define and Test API Requests with Postman](define-and-test-api-requests-with-postman)
 - Convert Postman Collection JSON to OpenAPI (Swagger) Definition JSON
 - Import Swagger to Flow (or Azure Logic Apps) as a Custom Connector
 - (For Power BI only) Use Swagger as a Blueprint for a Custom Connector
 
+### Define and Test API Requests with Postman
 A quick note on Postman: it is the de-facto tool that helps developers quickly define requests for any given REST API. It requires far less trial-and-error to construct good requests with it than say, using Power BI alone. And it lets me easily see **all** the results of my requests, making it easy to debug my custom connectors in Power BI or Flow (Azure Logic Apps).
 
 Above all, Postman creates a JSON-formatted schema that defines endpoints for the REST API, which I easily convert to a Swagger definition file. Swagger files are the chief way to define a custom connector in Flow (Azure Logic Apps).
