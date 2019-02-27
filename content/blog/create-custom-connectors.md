@@ -9,36 +9,49 @@ featured = ""
 featuredalt = ""
 featuredpath = ""
 linktitle = ""
-title = "Using Postman to Create a Custom Connection to Socrata on the Power Platform"
+title = "Creating a Custom Data Connection to the Socrata Open Data API on the Power Platform"
 type = "post"
 
 +++
 
-# 
-Posts: Socrata no auth -> Socrata app token -> (Socrata) Oauth 2.0
+## Creating a Custom Data Connector to RESTful APIs with the Power Platform
+One of my favorite data sources is the Socrata Open Data API (SODA), a RESTful API that offers developers tens of thousands of datasets from hundreds of Open Data Network entities like governments, non-profits, and NGOs from around the world. SODA is not only easy to use and understand, but among other things, also comes with great documentation that lets me interactively request the latest real-world results.
 
-## Connecting to REST APIs with the Power Platform
-Microsoft's Power Platform tools (Power BI, PowerApps, Flow) each allow me to connect to a variety of data sources on the web. One of my favorite data sources is the Socrata Open Data API (SODA), a RESTful API that offers developers tens of thousands of datasets from hundreds of Open Data Network entities like governments, non-profits, and NGOs from around the world. Among other things, SODA provides an API that's not only easy to use and understand, but also comes with great documentation that lets me interactively request real-world results.
+This post is the first in a series that describes the methods and tools I use to create custom data connectors in Microsoft's Power Platform (Power BI, PowerApps, and Flow). I'll show how I use Postman to construct, test, and debug requests with SODA. I'll also highlight important REST API concepts, such as request endpoints, headers, and methods. Along the way, I'll walk through creating an OpenAPI (formerly known as Swagger) file, an industry-standard specification that defines requests to a RESTful API. Swagger is also the chief way to define a custom data connector in Flow. I'll use this Swagger file to help me create a custom SODA connector in Flow; it will also serve as the blueprint as I do the same in Power BI.
 
-This post is the first in a series that describes the methods and tools I use to create custom connectors in Power BI and Microsoft Flow (and by extension, Azure Logic Apps). I'll use SODA to illustrate important REST API concepts, such as requests endpoints, headers, methods, and body (or data). I'll also try to convince you that
+Finally, I choose the Socrata Open Data API to show how I build custom data connectors for another important reason. Their service supports four common ways applications request access to data behind a RESTful API: 1) open access, 2) application key or token, 3) authentication with HTTP Basic, and 4) authentication through the OAuth 2.0 protocol. This post focuses on creating a custom SODA connector with an application key or token. Other open data APIs use this method as well, most notably the United States Census Bureau's API. The concepts I present in this post will apply equally to those APIs as well.
 
-My choice of SODA is important for another reason. Their API supports three of the most common ways developers access data through REST: 1) open access, 2) access keys, and 3) authorization tokens through the OAuth 2.0 protocol. This post focuses on creating custom connectors on REST APIs with open access. Future posts will focus on REST APIs that require the use of an access key and those that authenticate through the various OAuth 2.0 methods.
+Future posts will build on this custom SODA connector, incorporating OAuth 2.0 authentication methods, the same protocol used to authenticate to other popular RESTful APIs, including Dropbox, Google Sheets, and LinkedIn.
 
 ## A Simplified Workflow
-Here's my simplified workflow to create custom Power BI and Flow (Azure Logice Apps) connectors for any REST API:
+Here's my simplified workflow to create custom Power BI and Flow (Azure Logic Apps) connectors for a REST API:
 
-- [Define and Test API Requests with Postman](define-and-test-api-requests-with-postman)
-- Convert Postman Collection JSON to OpenAPI (Swagger) Definition JSON
-- Import Swagger to Flow (or Azure Logic Apps) as a Custom Connector
-- (For Power BI only) Use Swagger as a Blueprint for a Custom Connector
+**[Define and Test API Requests with Postman](#define-and-test-api-requests-with-postman)
+**[Convert Postman Collection Swagger Definition](#convert-postman-collection-swagger-definition)
+**[Import Swagger in Flow (Azure Logic Apps)](#import-swagger-in-flow-(azure-logic-apps))
+**[(For Power BI only) Use Swagger as a Blueprint](#(for-power-bi-only)-use-swagger-as-a-blueprint)
 
 ### Define and Test API Requests with Postman
-A quick note on Postman: it is the de-facto tool that helps developers quickly define requests for any given REST API. It requires far less trial-and-error to construct good requests with it than say, using Power BI alone. And it lets me easily see **all** the results of my requests, making it easy to debug my custom connectors in Power BI or Flow (Azure Logic Apps).
+Postman is the de-facto tool that helps developers quickly define requests for any given REST API. It requires far less trial-and-error to construct good requests with it than say, using Power BI alone. And it lets me easily see every bit of information I need about my requests, making it easier to debug my custom SODA connector in Power BI or Flow (Azure Logic Apps).
 
-Above all, Postman creates a JSON-formatted schema that defines endpoints for the REST API, which I easily convert to a Swagger definition file. Swagger files are the chief way to define a custom connector in Flow (Azure Logic Apps).
+Most importantly, Postman creates a JSON-formatted schema that defines endpoints for the REST API, which I can easily convert to a Swagger definition file.
+
+Let's say I wanted to get the latest Fire 911 calls for the City of Seattle. The [dataset page](https://dev.socrata.com/foundry/data.seattle.gov/grwu-wqtk) gives me an inline tool where I can request data from this endpoint:
+[Socrata Seattle page reactive cell image here]
+
+In Postman, I create the same request and see the same results:
+[Postman screenshot of City of Seattle Fire 911 calls endpoint and results]
+
+What happens behind the scenes when I make a request to an endpoint? What information is sent? What information 
+
+#### Anatomy of an API Request
 
 
+### Convert Postman Collection Swagger Definition
 
+### Import Swagger in Flow (Azure Logic Apps)
+
+### (For Power BI only) Use Swagger as a Blueprint
 
 Why not start in Power BI?
 Convergence of tools on the Power Platform
@@ -110,7 +123,13 @@ Define API Calls in Postman --> Transform Postman Collection (JSON) to Swagger (
       + Implicit (superseded by the Authorization code flow)
       + Extension
 
-## Resources You Should Know
+### Things to Download
+** Postman Collection file
+** Swagger definition file
+** Flow Custom Connector
+** Power BI Custom Connector
 
+### Resources You Should Know
++ <https://www.apimatic.io/transformer>
 + <https://www.jsonschema.net/>
 + <https://www.metaweather.com/api/location/search/?query=washington>
