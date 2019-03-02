@@ -16,13 +16,11 @@ type = "post"
 
 # Creating a Custom Data Connector to the Socrata Open Data API on the Power Platform
 
-One of my favorite data sources is the Socrata Open Data API (SODA), a RESTful API that offers developers tens of thousands of datasets from hundreds of Open Data Network entities like governments, non-profits, and NGOs from around the world. SODA is not only easy to use and understand, but among other things, it also comes with great documentation that lets me interactively request the latest data on their API. I've found that with the right workflow, creating a custom data connector to the SODA API on the Microsft Power Plaftorm can be relatively straightforward. 
+I've found that with the right workflow, creating a custom data connector on the Microsft Power Plaftorm can be relatively straightforward. This post is the first in a series that describes the methods and tools I use to create custom data connectors to any RESTful API. To illustrate this workflow, this post will walk through building custom data connectors for Power BI, Flow, and Azure Logic Apps to the Socrata Open Data API (SODA)<sup>[[1]](#soda)</sup>. I'll show my method to define, test, and debug requests with Postman. I'll also highlight important REST API concepts, such as request endpoints, headers, and methods. Along the way, I'll walk through creating an OpenAPI (formerly known as Swagger) file, an industry-standard specification that defines requests to a RESTful API. I'll use this Swagger file to help me create a custom data connector in Flow and Azure Logic Apps; it will also serve as the blueprint as I do the same in Power BI.
 
-This post is the first in a series that describes the methods and tools I use to create custom data connectors to any RESTful API like SODA. I'll show my method to define, test, and debug requests to the Socrata Open Data API. I'll also highlight important REST API concepts, such as request endpoints, headers, and methods. Along the way, I'll walk through creating an OpenAPI (formerly known as Swagger) file, an industry-standard specification that defines requests to a RESTful API. Swagger is also the chief way to define a custom data connector in Flow and Azure Logic Apps. I'll use this Swagger file to help me create a custom SODA connector in Flow; it will also serve as the blueprint as I do the same in Power BI.
+This first post focuses on creating a custom SODA connector that makes requests to the service with an application key or token. More importantly, the SODA API<sup>[[2]](#app-token)</sup> supports four common ways applications request access to data to a RESTful service: 1) open access, 2) application key or token, 3) authentication with HTTP Basic, and 4) authentication through the OAuth 2.0 protocol. This means the methods used to creats this custom data connector will apply equally to hundreds of other RESTful APIs, like the U.S. Census Bureau API, Google Sheets, Dropbox, and LinkedIn, just to name a few.
 
-This first post focuses on creating a custom SODA connector that makes requests to the service with an application key or token. More importantly, the SODA API supports four common ways applications request access to data to a RESTful service: 1) open access, 2) application key or token, 3) authentication with HTTP Basic, and 4) authentication through the OAuth 2.0 protocol. This means the methods applied to this custom data connector will apply equally to hundreds of other RESTful APIs, like the U.S. Census Bureau API, Google Sheets, Dropbox, and LinkedIn, just to name a few. Future posts will build on this custom SODA connector, incorporating OAuth 2.0 authentication methods.
-
-**A quick note**: While the Socrata Open Data API allows for unlimited requests to its service, calls without an application token are [subject to throttling limits](https://dev.socrata.com/docs/app-tokens.html#throttling-limits). While not absolutely necessary to follow along with this post, you'll need it to follow along future posts. Please do consider [obtaining a SODA application token](https://dev.socrata.com/docs/app-tokens.html#obtaining-an-application-token).
+Future posts will build on this custom SODA connector, incorporating OAuth 2.0 authentication methods.
 
 ## A Simplified Workflow
 
@@ -34,27 +32,28 @@ Here's my simplified workflow to create custom Power BI and Flow connectors for 
 
 ### Define, Test, and Debug API Requests
 
-Let's say I want to get the latest police department beats<sup>[[1]](#beats)</sup> for the City of Seattle. The [dataset page](https://dev.socrata.com/foundry/data.seattle.gov/xjqu-9v63) gives me an inline tool where I can request data from this endpoint:
-[Socrata Seattle page reactive cell image here]
+Let's say I want to download the latest fire emergency calls in the City of Seattle. On the [dataset documentation page](https://dev.socrata.com/foundry/data.seattle.gov/grwu-wqtk) there is a runtime tool that let's me request and see the results of this dataset right in the browser:
 
-In Postman<sup>[[2]](#postman)</sup>, I create the same request and see the same results:
-[Postman screenshot of City of Seattle police department beats endpoint and results]
+![Emergency calls](/img/main/Emergency Calls.png)
 
-If I call this endpoint in Power BI using the `Web.Contents`<sup>[[3]](#odata)</sup> function:
+In Postman<sup>[[3]](#postman)</sup>, I create the same request, which returns the same results:
+
+![Emergency Calls Postman](/img/main/Emergency Calls Postman.png)
+
+Making the same request in Power BI using the `Web.Contents`<sup>[[3]](#odata)</sup> function also yeilds the same results:
 
 ``` javascript
 let
-    Source = Json.Document(Web.Contents("https://data.seattle.gov/resource/xjqu-9v63.json")),
+    Source = Json.Document(Web.Contents("https://data.seattle.gov/resource/grwu-wqtk.json")),
     #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
-    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"applicable_years", "description", "file_type"}, {"applicable_years", "description", "file_type"})
+    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", Record.FieldNames(#"Converted to Table"{0}[Column1]))
 in
     #"Expanded Column1"
 ```
 
-I also get the same results:
-[image of Power BI Dataflows query result]
+![Emergency Calls Power BI](/img/main/Emergency Calls Power BI.png)
 
-But what happens behind the scenes as I make these requests? What information is sent? What other information is returned? I'd like to switch gears and talk about what goes into an API request. This part is important since it will figure promintently in future posts when I talk about creating a custom connector using the OAuth 2.0 authentication protocol.
+But what happens behind the scenes as I make these requests? What information is sent? What other information is returned? I'd like to switch gears and talk about what goes into an API request. Understanding the structure of request and response headers is important since it will figure promintently in future posts when I talk about creating a custom connector using the OAuth 2.0 authentication protocol.
 
 #### Anatomy of an API Request
 
@@ -63,7 +62,7 @@ But what happens behind the scenes as I make these requests? What information is
 - Headers
 - Data (or Body or Message)
 
-My request to get police department beats called the `https://data.seattle.gov` endpoint, which is the starting point of an API. The starting point for Google Sheets API is `https://sheets.googleapis.com`. The one for LinkedIn is `https://api.linkedin.com`. The Power BI API is `https://api.powerbi.com`.
+My request for fire emergency callss called the `https://data.seattle.gov` endpoint, which is the starting point of an API. Likewise, the starting point for Google Sheets API is `https://sheets.googleapis.com`. The one for LinkedIn is `https://api.linkedin.com`. The endpoint for the Power BI API is `https://api.powerbi.com`.
 
 
 
@@ -154,8 +153,9 @@ Define API Calls in Postman --> Transform Postman Collection (JSON) to Swagger (
 + <https://www.jsonschema.net/>
 + <https://www.metaweather.com/api/location/search/?query=washington>
 
-<ol><li id="app-token"><strong>Note</strong>: While the Socrata Open Data API allows for unlimited requests to its service, calls without an application token are <a href= "https://dev.socrata.com/docs/app-tokens.html#throttling-limits">subject to throttling limits</a>. While not absolutely necessary to follow along with this post, you'll need an application token to follow along in future posts. Please do consider <a href="https://dev.socrata.com/docs/app-tokens.html#obtaining-an-application-token">obtaining one here</a>.</li>
-<li id="postman">
-Why Postman? It's the <em>de-facto</em> tool tha helps developers quickly define requests for any given REST API. It requires far less trial-and-error to construct good requests with it than say, using Power BI and Fiddler(link to Chris Webb blog post). And it lets me easily see every bit of information I need about my requests, making it easier to debug my custom SODA connector in Power BI or Flow.
+<ol>
+<li id="soda">One of my favorite data sources is the Socrata Open Data API, a RESTful API that offers developers tens of thousands of datasets from hundreds of Open Data Network entities like governments, non-profits, and NGOs from around the world. SODA is not only easy to use and understand, but among other things, it also comes with great documentation that lets me interactively request the latest data.</li>
+<li id="app-token"><strong>Note</strong>: While the Socrata Open Data API allows for unlimited requests to its service, calls without an application token are <a href= "https://dev.socrata.com/docs/app-tokens.html#throttling-limits">subject to throttling limits</a>. While not absolutely necessary to follow along with this post, you'll need an application token to follow along in future posts. Please do consider <a href="https://dev.socrata.com/docs/app-tokens.html#obtaining-an-application-token">obtaining one here</a>.</li>
+<li id="postman">Why Postman? It's the <em>de-facto</em> tool tha helps developers quickly define requests for any given REST API. It requires far less trial-and-error to construct good requests with it than say, using Power BI and Fiddler(link to Chris Webb blog post). And it lets me easily see every bit of information I need about my requests, making it easier to debug my custom SODA connector in Power BI or Flow.
 
 More importantly, Postman creates a JSON-formatted schema that defines endpoints I created for the custom SODA connector, which I then convert to a Swagger definition file. (I talk about converting Postman Collections to Swagger definition files [later](#convert-postman-collection-swagger-definition).)</li></ol>
