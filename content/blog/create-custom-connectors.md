@@ -32,15 +32,15 @@ I've codified the methods I use to create custom data connectors on the Power Pl
 
 ## Define, Test, and Debug API Requests
 
-Let's say I want to download the latest fire emergency calls in the City of Seattle. On the [SODA dataset documentation page](https://dev.socrata.com/foundry/data.seattle.gov/grwu-wqtk) there is a runtime tool that lets me see the results of this request right in the browser:
+Let's say I want to download the latest fire emergency calls in the City of Seattle. The [SODA dataset documentation page](https://dev.socrata.com/foundry/data.seattle.gov/grwu-wqtk) provides a tool that lets me see the results of this request right in the browser:
 
 ![Emergency calls](/img/main/Emergency Calls.png)
 
-In Postman, I create the same request, which returns the same results:
+I create the same request in Postman, which returns the same results:
 
 ![Emergency Calls Postman](/img/main/Emergency Calls Postman.png)
 
-Making the same request in Power BI using the `Web.Contents`<sup>[[4]](#odata)</sup> function also yields the same results:
+Using the `Web.Contents`<sup>[[4]](#odata)</sup> function, I make the same request in Power BI, which also yields the same results:
 
 ``` javascript
 let
@@ -88,7 +88,13 @@ Headers pass additional information within the [request and the response](https:
 
 ![Emergency Calls Headers Postman](/img/main/Emergency Calls Headers Postman.png)
 
-Web browsers also allow me to see what is passed in the request and response headers. In the Developer Console in Firefox<sup>[[5]](#dev-console)</sup>
+Web browsers also allow me to see what is passed in the request and response headers. I make a request to the fire emergency calls in Firefox and monitor the headers in the Developer Console<sup>[[5]](#dev-console)</sup>:
+
+![Emergency Calls Headers Firefox](/img/main/Emergency Calls Headers Firefox.png)
+
+Not to be outdone, the headers for my request in Power BI look like this in Fiddler:
+
+![Emergency Calls Headers Power BI](/img/main/Emergency Calls Headers Power BI.png)
 
 #### Data (or Body or Message)
 
