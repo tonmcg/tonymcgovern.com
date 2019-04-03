@@ -18,7 +18,7 @@ type = "post"
 
 I've found that with the right workflow, creating a custom data connector on the Microsoft Power Platform can be relatively straightforward. This post is the first in a series that describes the methods and tools I use to create custom data connectors to RESTful APIs with Power BI, PowerApps, Flow, and Azure Logic Apps. To illustrate this workflow, I'll build a custom connector to the Socrata Open Data API (SODA)[^1]. I'll walk through the methods I use to define Http requests with Postman[^2]. Along the way, I'll show how to create an OpenAPI Specification file[^3] and use it to help design the custom SODA connector in PowerApps, Flow, and Azure Logic Apps; the OpenAPI file will also serve as a blueprint as I do the same in Power BI.
 
-For those new to building applications that request data from a RESTful API, I try to demystify the process by defining important Http request concepts, such as request endpoints, headers, and methods in Appendix 1: Anatomy of an Http Request. The concepts in this appendix lay the foundation for understanding how to build custom data connectors on the Power Platform. This means that you can take the concepts, methods, and tools outlined in this series of posts and create custom data connectors for hundreds of other RESTful APIs. Even more, you can create custom data connectors that mash up multiple APIs – say to geocode locations using the [Geocoding API](https://docs.mapbox.com/api/search/) from the Mapbox API on demographic data from the [U.S. Census Bureau API](https://www.census.gov/data/developers/data-sets.html) – to create real-time, robust reports, visuals, and apps that let you analyze, act, and automate. The possibilities are limitless.
+For those new to building applications on top of RESTful APIs, I also try to demystify the process by defining fundamental Http request concepts. This means you can take the concepts, methods, and tools outlined here and create custom data connectors for hundreds of other RESTful APIs on the Power Platform. You’ll find most RESTful APIs follow a certain pattern and once learned, you’ll want to use this pattern to create a variety of other custom data connectors that enrich your Power Platform apps, allowing your users to more easily analyze, act, and automate. The possibilities are limitless.
 
 This first post focuses on creating a custom data connector that makes requests to the SODA API without any authentication[^4]. Future posts will build on this custom SODA connector, incorporating application keys and OAuth 2.0 authentication methods.[^5]
 
@@ -42,12 +42,11 @@ which returns the following results:
 
 ![Emergency Calls Postman](img/main/Emergency Calls Postman.png)
 
-Using the `Web.Contents` function, I make the same request in Power BI, which also yields similar results:
-
-``` javascript
+Using the `Web.Contents` function in Power Query M, I make the same request in Power BI, which also yields similar results:
+```javascript
 let
     Source = Json.Document(Web.Contents("https://data.seattle.gov/resource/grwu-wqtk.json")),
-    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null,null, ExtraValues.Error),
+    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
     #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", Record.FieldNames(#"Converted to Table"{0}[Column1]))
 in
     #"Expanded Column1"
@@ -55,55 +54,31 @@ in
 
 ![Emergency Calls Power BI](img/main/Emergency Calls Power BI.png)
 
-I’ve defined a simple Http request in Postman to the SODA API and tested the
-request in Power BI. I’m now ready to create an OpenAPI definition file that
-will help me build a custom data connector to the SODA API in PowerApps, Flow,
-and Azure Logic Apps.
+Using this simple Http request to the SODA API in both Postman and Power Query M, I’m now ready to create an OpenAPI definition file that will help me build a custom data connector to the SODA API in PowerApps, Flow, and Azure Logic Apps.
 
 Create an OpenAPI Definition File for PowerApps, Flow, and Azure Logic Apps
 ---------------------------------------------------------------------------
 
-Postman has a concept of a *collection*, which is a group of saved requests
-organized into folders. In the example above, I created an Http request to the
-fire emergency calls dataset and saved this request in a Postman collection[^7]
-I called “City of Seattle”, under a folder titled, “Http Requests”:
+Postman has a concept of a *collection*, which is a group of saved requests organized into folders. In the example above, I create an Http request to the fire emergency calls dataset and save this request in a Postman collection[^7] I call "City of Seattle", under a folder titled, "Http Requests":
 
 ![Postman collection](media/0954cf1b03264b7b1944f79143f2f7ba.png)
 
-Postman allows me to [export this
-collection](https://learning.getpostman.com/docs/postman/collections/data_formats/)
-as a JSON-formatted definition file that can be read by most programming
-languages and applications, including [PowerApps, Flow, and Azure Logic
-Apps](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection).
-I export the JSON file as a version 1 Postman collection:
+Postman allows me to [export this collection](https://learning.getpostman.com/docs/postman/collections/data_formats/) as a JSON-formatted definition file that can be read by most programming languages and applications, including [PowerApps, Flow, and Azure Logic Apps](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection). I export the JSON file as a Postman Collection v1:
 
 ![A screenshot of a cell phone Description automatically generated](media/96c01bbac47dfdb451d5de10b767f1be.png)
 
 ![A screenshot of a cell phone Description automatically generated](media/8710c24238c69dd6033ecb4adf9771a8.png)
 
-This Postman collection contains much of the required information needed for a
-custom data connector in PowerApps, Flow, and Azure Logic Apps. Follow this
-tutorial on the [Microsoft custom connectors documentation
-page](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection#import-the-postman-collection)
-to learn how to import a Postman collection through the custom connector wizard.
+This Postman collection contains much of the required information needed for a custom data connector in PowerApps, Flow, and Azure Logic Apps. Follow this tutorial on the [Microsoft custom connectors documentation
+page](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection#import-the-postman-collection) to learn how to import a Postman collection through the custom connector wizard.
 
-Since the SODA API allows for open access and therefore does not require[^8]
-authentication, I skip over the “[Specify authorization
-type](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection#specify-authentication-type)”
-section of the tutorial. In future post, as I implement access tokens, basic
-authentication, and OAuth 2.0 authentication, I walk through how to correctly
-setting authentication parameters in this section.
+Since the SODA API allows for open access and therefore does not require[^8] authentication, I skip over the “[Specify authorization
+type](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection#specify-authentication-type)” section of the tutorial. In a future post, as I implement access tokens, basic authentication, and OAuth 2.0 authentication, I’ll walk through how to correctly set authentication parameters in this section.
 
 This post picks up at the “[Review and update the connector
-definition](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection#review-and-update-the-connector-definition)”
-section of the tutorial. On the **3. Definition** page of the custom connector
-wizard, the UI presents Actions, Triggers, and References sections.
+definition](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-postman-collection#review-and-update-the-connector-definition)” section of the tutorial. On the **3. Definition** page of the custom connector wizard, the UI shows Actions, Triggers, and References sections.
 
-PowerApps, Flow, and Azure Logic Apps represent Http requests as Actions. The
-Action displayed below is for the fire emergency calls request I defined in the
-Postman collection, which I call FireEmergency. Postman collections only define
-Http requests and have no notion of Triggers or References, so those are left
-blank.
+PowerApps, Flow, and Azure Logic Apps represent Http requests as Actions. The Action displayed below is for the fire emergency calls request I defined in the Postman collection, which I call FireEmergency. Postman collections only define Http requests and have no notion of Triggers or References, so I leave those blank.
 
 ![A screenshot of a cell phone Description automatically generated](media/601dc3190039e4b06e4b267f8b542b6e.png)
 
